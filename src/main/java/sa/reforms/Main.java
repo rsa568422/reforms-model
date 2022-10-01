@@ -14,6 +14,8 @@ public class Main {
         System.out.println("\nAseguradoras:");
         insurers.forEach(System.out::println);
 
+        System.out.println("\nAgregar Pólizas a las aseguradoras");
+
     }
 
     private static Set<Insurer> initInsurers() {
