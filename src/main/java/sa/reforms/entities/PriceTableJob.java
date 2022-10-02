@@ -5,14 +5,12 @@ import sa.reforms.enums.Guild;
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Map;
-import java.util.Optional;
 import java.util.function.Function;
 
-public class PriceTableJob extends ContractedJob {
+public abstract class PriceTableJob extends ContractedJob {
 
-    private final Map<Range, Function<Double, BigDecimal>> priceTable;
+    protected final Map<Range, Function<Double, BigDecimal>> priceTable;
 
     public PriceTableJob(@NonNull Insurer insurer, @NonNull Guild guild, @NonNull String name,
                          @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
@@ -27,33 +25,27 @@ public class PriceTableJob extends ContractedJob {
     }
 
     @Override
-    public BigDecimal getPrize(Optional<Double> quantity) {
-        return calculatePrice(quantity.orElseThrow(() -> new InvalidParamsException("Quantity can't be null")));
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PriceTableJob)) return false;
+        if (!super.equals(o)) return false;
+
+        PriceTableJob that = (PriceTableJob) o;
+
+        return priceTable.equals(that.priceTable);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + priceTable.hashCode();
+        return result;
     }
 
     @Override
     public String toString() {
         String target = super.toString().substring(0, super.toString().indexOf("{"));
         return super.toString().replace(target, "PriceTableJob");
-    }
-
-    private BigDecimal calculatePrice(Double quantity) {
-        if (quantity < 0) throw new InvalidParamsException("Quantity can't be negative");
-        Range rank = this.priceTable
-                .entrySet()
-                .stream()
-                .filter(entry -> entry.getKey().contains(quantity))
-                .findAny()
-                .map(Map.Entry::getKey)
-                .orElseThrow(() -> new InvalidParamsException("No rank registered for that quantity"));
-        return this.priceTable
-                .entrySet()
-                .stream()
-                .filter(entry -> entry.getKey().compareTo(rank) <= 0)
-                .map(Map.Entry::getValue)
-                .map(function -> function.apply(quantity))
-                .reduce(new BigDecimal("0.00"), BigDecimal::add)
-                .setScale(2, RoundingMode.CEILING);
     }
 
 }
