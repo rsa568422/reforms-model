@@ -5,6 +5,7 @@ import sa.reforms.enums.Guild;
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
@@ -38,7 +39,8 @@ public class UniqueRankPriceTableJob extends PriceTableJob {
                 .min(Map.Entry.comparingByKey())
                 .map(Map.Entry::getValue)
                 .map(function -> function.apply(quantity))
-                .orElseThrow(() -> new InvalidParamsException("No rank registered for that quantity"));
+                .orElseThrow(() -> new InvalidParamsException("No rank registered for that quantity"))
+                .setScale(2, RoundingMode.CEILING);
     }
 
 }
