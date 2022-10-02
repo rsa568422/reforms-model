@@ -29,8 +29,6 @@ public class Insurance {
     @Setter
     private Property property;
 
-    private final List<Incidence> incidences = new LinkedList<>();
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -56,7 +54,6 @@ public class Insurance {
         joiner.add(String.format("insurer:%s", this.insurer));
         joiner.add(String.format("client:%s", this.client));
         joiner.add(String.format("property:%s", this.property));
-        if (!this.incidences.isEmpty()) joiner.add(String.format("incidences:%s", this.incidences));
         return joiner.toString();
     }
 

@@ -1,3 +1,3 @@
-package sa.reforms.entities;
+package sa.reforms.enums;
 
 public enum TaskStatus { PENDING, DONE, CANCELED }
