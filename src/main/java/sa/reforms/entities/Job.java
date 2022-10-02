@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import sa.reforms.enums.Guild;
 
 import java.util.Optional;
 import java.util.StringJoiner;
@@ -11,6 +12,10 @@ import java.util.StringJoiner;
 @Getter
 @RequiredArgsConstructor
 public class Job {
+
+    @NonNull
+    @Setter
+    private Guild guild;
 
     @NonNull
     @Setter
@@ -40,6 +45,7 @@ public class Job {
     @Override
     public String toString() {
         StringJoiner joiner = new StringJoiner(", ", "Job{ ", " }");
+        joiner.add(String.format("guild:%s", this.guild));
         joiner.add(String.format("name:%s", this.name));
         this.description.ifPresent(description -> joiner.add(String.format("description:%s", this.description)));
         return joiner.toString();
