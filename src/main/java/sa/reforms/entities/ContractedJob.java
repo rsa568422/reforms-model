@@ -3,6 +3,7 @@ package sa.reforms.entities;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import sa.reforms.enums.Guild;
 
 import java.math.BigDecimal;
 import java.util.Optional;

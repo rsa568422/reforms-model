@@ -1,9 +1,11 @@
 package sa.reforms.entities;
 
 import lombok.NonNull;
+import sa.reforms.enums.Guild;
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
@@ -36,6 +38,7 @@ public class PriceTableJob extends ContractedJob {
     }
 
     private BigDecimal calculatePrice(Double quantity) {
+        if (quantity < 0) throw new InvalidParamsException("Quantity can't be negative");
         return this.priceTable
                 .entrySet()
                 .stream()
@@ -43,7 +46,8 @@ public class PriceTableJob extends ContractedJob {
                 .min(Map.Entry.comparingByKey())
                 .orElseThrow(() -> new InvalidParamsException("Price not found on table"))
                 .getValue()
-                .apply(quantity);
+                .apply(quantity)
+                .setScale(2, RoundingMode.CEILING);
     }
 
 }
