@@ -14,6 +14,10 @@ public class Job {
 
     @NonNull
     @Setter
+    private Guild guild;
+
+    @NonNull
+    @Setter
     private String name;
 
     private Optional<String> description = Optional.empty();
@@ -40,6 +44,7 @@ public class Job {
     @Override
     public String toString() {
         StringJoiner joiner = new StringJoiner(", ", "Job{ ", " }");
+        joiner.add(String.format("guild:%s", this.guild));
         joiner.add(String.format("name:%s", this.name));
         this.description.ifPresent(description -> joiner.add(String.format("description:%s", this.description)));
         return joiner.toString();

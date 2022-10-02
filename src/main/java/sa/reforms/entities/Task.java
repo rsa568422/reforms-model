@@ -13,7 +13,7 @@ public class Task {
 
     @NonNull
     @Setter
-    private Job job;
+    private ContractedJob job;
 
     @NonNull
     @Setter
@@ -21,11 +21,11 @@ public class Task {
 
     private Optional<Double> quantity = Optional.empty();
 
-    public Task(@NonNull Job job) {
+    public Task(@NonNull ContractedJob job) {
         this.job = job;
     }
 
-    public Task(@NonNull Job job, @NonNull Double quantity) {
+    public Task(@NonNull ContractedJob job, @NonNull Double quantity) {
         this(job);
         this.quantity = Optional.ofNullable(quantity);
     }
