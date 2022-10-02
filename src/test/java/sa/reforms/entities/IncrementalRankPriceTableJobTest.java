@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import sa.reforms.entities.data.PriceTableJobData;
+import sa.reforms.entities.data.IncrementalRankPriceTableJobData;
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;
@@ -12,13 +12,13 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PriceTableJobTest {
+class IncrementalRankPriceTableJobTest {
 
-    private PriceTableJob priceTableJob;
+    private IncrementalRankPriceTableJob incrementalRankPriceTableJob;
 
     @BeforeEach
     void setUp() {
-        this.priceTableJob = PriceTableJobData.PT_JOB_PAINTWORK_PLASTIC();
+        this.incrementalRankPriceTableJob = IncrementalRankPriceTableJobData.PT_JOB_PAINTWORK_PLASTIC();
     }
 
     @ParameterizedTest
@@ -27,7 +27,7 @@ class PriceTableJobTest {
         Optional<Double> quantity = Optional.of(Double.valueOf(stringQuantity));
         BigDecimal expected = new BigDecimal(stringExpected);
 
-        BigDecimal actual = this.priceTableJob.getPrize(quantity);
+        BigDecimal actual = this.incrementalRankPriceTableJob.getPrize(quantity);
 
         System.out.printf("expected = %s, actual = %s%n", expected.toPlainString(), actual.toPlainString());
 
@@ -40,18 +40,18 @@ class PriceTableJobTest {
     @Test
     void test_getPrize_quantity_empty() {
         Optional<Double> quantity = Optional.empty();
-        assertThrows(InvalidParamsException.class, () -> this.priceTableJob.getPrize(quantity));
+        assertThrows(InvalidParamsException.class, () -> this.incrementalRankPriceTableJob.getPrize(quantity));
     }
 
     @Test
     void test_getPrize_quantity_invalid() {
         Optional<Double> quantity = Optional.of(-3.0);
-        assertThrows(InvalidParamsException.class, () -> this.priceTableJob.getPrize(quantity));
+        assertThrows(InvalidParamsException.class, () -> this.incrementalRankPriceTableJob.getPrize(quantity));
     }
 
     @Test
     void test_toString() {
-        String string = this.priceTableJob.toString();
+        String string = this.incrementalRankPriceTableJob.toString();
 
         assertAll(
                 () -> assertFalse(string.contains("ContractedJob")),
