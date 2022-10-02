@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+
 import sa.reforms.enums.Guild;
 
 import java.util.Optional;

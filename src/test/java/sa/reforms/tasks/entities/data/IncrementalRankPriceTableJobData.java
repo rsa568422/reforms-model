@@ -1,6 +1,6 @@
-package sa.reforms.entities.data;
+package sa.reforms.tasks.entities.data;
 
-import sa.reforms.entities.IncrementalRankPriceTableJob;
+import sa.reforms.tasks.entities.IncrementalRankPriceTableJob;
 
 public class IncrementalRankPriceTableJobData extends PriceTableJobData {
 

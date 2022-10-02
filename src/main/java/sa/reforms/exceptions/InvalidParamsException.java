@@ -1,6 +1,6 @@
 package sa.reforms.exceptions;
 
-public class InvalidParamsException extends RuntimeException {
+public class InvalidParamsException extends ReformsException {
 
     public InvalidParamsException(String message) {
         super(message);
