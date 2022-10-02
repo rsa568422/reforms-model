@@ -29,8 +29,6 @@ class IncrementalRankPriceTableJobTest {
 
         BigDecimal actual = this.incrementalRankPriceTableJob.getPrize(quantity);
 
-        System.out.printf("expected = %s, actual = %s%n", expected.toPlainString(), actual.toPlainString());
-
         assertAll(
                 () -> assertEquals(0, expected.compareTo(actual)),
                 () -> assertEquals(expected.toPlainString(), actual.toPlainString())
@@ -55,7 +53,7 @@ class IncrementalRankPriceTableJobTest {
 
         assertAll(
                 () -> assertFalse(string.contains("ContractedJob")),
-                () -> assertTrue(string.contains("PriceTableJob")),
+                () -> assertTrue(string.contains("IncrementalRankPriceTableJob")),
                 () -> assertTrue(string.contains("guild")),
                 () -> assertTrue(string.contains("name")),
                 () -> assertFalse(string.contains("description")),
