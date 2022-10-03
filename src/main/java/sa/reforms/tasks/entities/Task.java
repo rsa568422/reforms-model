@@ -21,23 +21,23 @@ public class Task {
     @Setter
     private TaskStatus status = TaskStatus.PENDING;
 
-    private Optional<Double> quantity = Optional.empty();
+    private Optional<Quantity> quantity = Optional.empty();
 
     public Task(@NonNull ContractedJob job) {
         this.job = job;
     }
 
-    public Task(@NonNull ContractedJob job, @NonNull Double quantity) {
+    public Task(@NonNull ContractedJob job, Quantity quantity) {
         this(job);
         this.quantity = Optional.ofNullable(quantity);
     }
 
-    public void setQuantity(Double quantity) {
+    public void setQuantity(Quantity quantity) {
         this.quantity = Optional.ofNullable(quantity);
     }
 
     public BigDecimal getPrice() {
-        return this.job.getPrize(this.quantity);
+        return this.job.getPrize(this.quantity.map(Quantity::getMeasure));
     }
 
     @Override
@@ -48,13 +48,13 @@ public class Task {
         Task task = (Task) o;
 
         if (!getJob().equals(task.getJob())) return false;
-        return getQuantity() != null ? getQuantity().equals(task.getQuantity()) : task.getQuantity() == null;
+        return getQuantity().isPresent() ? getQuantity().equals(task.getQuantity()) : task.getQuantity().isEmpty();
     }
 
     @Override
     public int hashCode() {
         int result = getJob().hashCode();
-        result = 31 * result + (getQuantity() != null ? getQuantity().hashCode() : 0);
+        result = 31 * result + (getQuantity().isPresent() ? getQuantity().hashCode() : 0);
         return result;
     }
 
