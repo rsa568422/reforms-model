@@ -1,6 +1,6 @@
-package sa.reforms.entities.data;
+package sa.reforms.tasks.entities.data;
 
-import sa.reforms.entities.UniqueRankPriceTableJob;
+import sa.reforms.tasks.entities.UniqueRankPriceTableJob;
 
 public class UniqueRankPriceTableJobData extends PriceTableJobData {
 

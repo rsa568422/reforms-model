@@ -1,8 +1,12 @@
-package sa.reforms.entities;
+package sa.reforms.tasks.entities;
 
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+
+import sa.reforms.entities.Insurer;
+import sa.reforms.entities.Job;
+
 import sa.reforms.enums.Guild;
 
 import java.math.BigDecimal;

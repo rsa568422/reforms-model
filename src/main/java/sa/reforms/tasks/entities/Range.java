@@ -1,8 +1,9 @@
-package sa.reforms.entities;
+package sa.reforms.tasks.entities;
 
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+
 import sa.reforms.exceptions.InvalidParamsException;
 
 @Getter

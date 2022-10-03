@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import sa.reforms.enums.Guild;
 
+import sa.reforms.enums.Guild;
+
 import java.util.Optional;
 import java.util.StringJoiner;
 
