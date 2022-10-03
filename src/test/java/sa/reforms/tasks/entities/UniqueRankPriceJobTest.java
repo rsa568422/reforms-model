@@ -1,24 +1,25 @@
 package sa.reforms.tasks.entities;
 
+import sa.reforms.tasks.entities.data.UniqueRankPriceTableJobData;
+import sa.reforms.exceptions.InvalidParamsException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import sa.reforms.tasks.entities.data.UniqueRankPriceTableJobData;
-import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UniqueRankPriceTableJobTest {
+class UniqueRankPriceJobTest {
 
-    private UniqueRankPriceTableJob uniqueRankPriceTableJob;
+    private UniqueRankPriceJob uniqueRankPriceJob;
 
     @BeforeEach
     void setUp() {
-        this.uniqueRankPriceTableJob = UniqueRankPriceTableJobData.UR_JOB_PAINTWORK_PLASTIC();
+        this.uniqueRankPriceJob = UniqueRankPriceTableJobData.UR_JOB_PAINTWORK_PLASTIC();
     }
 
     @ParameterizedTest
@@ -27,7 +28,7 @@ class UniqueRankPriceTableJobTest {
         Optional<Double> quantity = Optional.of(Double.valueOf(stringQuantity));
         BigDecimal expected = new BigDecimal(stringExpected);
 
-        BigDecimal actual = this.uniqueRankPriceTableJob.getPrize(quantity);
+        BigDecimal actual = this.uniqueRankPriceJob.getPrize(quantity);
 
         assertAll(
                 () -> assertEquals(0, expected.compareTo(actual)),
@@ -38,22 +39,22 @@ class UniqueRankPriceTableJobTest {
     @Test
     void test_getPrize_quantity_empty() {
         Optional<Double> quantity = Optional.empty();
-        assertThrows(InvalidParamsException.class, () -> this.uniqueRankPriceTableJob.getPrize(quantity));
+        assertThrows(InvalidParamsException.class, () -> this.uniqueRankPriceJob.getPrize(quantity));
     }
 
     @Test
     void test_getPrize_quantity_invalid() {
         Optional<Double> quantity = Optional.of(-3.0);
-        assertThrows(InvalidParamsException.class, () -> this.uniqueRankPriceTableJob.getPrize(quantity));
+        assertThrows(InvalidParamsException.class, () -> this.uniqueRankPriceJob.getPrize(quantity));
     }
 
     @Test
     void test_toString() {
-        String string = this.uniqueRankPriceTableJob.toString();
+        String string = this.uniqueRankPriceJob.toString();
 
         assertAll(
                 () -> assertFalse(string.contains("ContractedJob")),
-                () -> assertTrue(string.contains("UniqueRankPriceTableJob")),
+                () -> assertTrue(string.contains("UniqueRankPriceJob")),
                 () -> assertTrue(string.contains("guild")),
                 () -> assertTrue(string.contains("name")),
                 () -> assertFalse(string.contains("description")),

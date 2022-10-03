@@ -18,7 +18,7 @@ class IncrementalRankPriceTableJobTest {
 
     @BeforeEach
     void setUp() {
-        this.incrementalRankPriceTableJob = IncrementalRankPriceTableJobData.PT_JOB_PAINTWORK_PLASTIC();
+        this.incrementalRankPriceTableJob = IncrementalRankPriceTableJobData.IR_JOB_PAINTWORK_PLASTIC();
     }
 
     @ParameterizedTest

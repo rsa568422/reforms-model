@@ -20,7 +20,7 @@ class DirectPriceJobTest {
 
     @BeforeEach
     void setUp() {
-        this.directPriceJob = DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC;
+        this.directPriceJob = DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC();
     }
 
     @ParameterizedTest

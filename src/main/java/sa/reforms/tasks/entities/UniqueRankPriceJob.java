@@ -1,25 +1,24 @@
 package sa.reforms.tasks.entities;
 
-import lombok.NonNull;
-
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
 
 import sa.reforms.exceptions.InvalidParamsException;
 
+import lombok.NonNull;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class UniqueRankPriceTableJob extends PriceTableJob {
+public class UniqueRankPriceJob extends PriceTableJob {
 
-    public UniqueRankPriceTableJob(@NonNull Insurer insurer, @NonNull Guild guild, @NonNull String name, @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
+    public UniqueRankPriceJob(@NonNull Insurer insurer, @NonNull Guild guild, @NonNull String name, @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
         super(insurer, guild, name, priceTable);
     }
 
-    public UniqueRankPriceTableJob(@NonNull Insurer insurer, @NonNull Job job, @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
+    public UniqueRankPriceJob(@NonNull Insurer insurer, @NonNull Job job, @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
         this(insurer, job.getGuild(), job.getName(), priceTable);
     }
 
@@ -31,7 +30,7 @@ public class UniqueRankPriceTableJob extends PriceTableJob {
     @Override
     public String toString() {
         String target = super.toString().substring(0, super.toString().indexOf("{"));
-        return super.toString().replace(target, "UniqueRankPriceTableJob");
+        return super.toString().replace(target, "UniqueRankPriceJob");
     }
 
     private BigDecimal calculatePrice(Double quantity) {

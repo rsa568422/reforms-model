@@ -17,7 +17,7 @@ public class TaskData {
         return QuantityData
                 .QUANTITIES(unit)
                 .stream()
-                .map(quantity -> new Task(job, quantity.orElse(null)))
+                .map(quantity -> new Task(job, quantity))
                 .collect(Collectors.toSet());
     }
 
