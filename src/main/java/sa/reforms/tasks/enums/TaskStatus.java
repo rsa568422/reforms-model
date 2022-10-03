@@ -1,3 +1,3 @@
 package sa.reforms.tasks.enums;
 
-public enum TaskStatus { PENDING, DONE, CANCELED }
+public enum TaskStatus { PENDING, DONE, CANCELED, REOPENED }

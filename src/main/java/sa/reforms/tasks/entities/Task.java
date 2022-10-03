@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import sa.reforms.tasks.enums.TaskStatus;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.StringJoiner;
 
@@ -33,6 +34,10 @@ public class Task {
 
     public void setQuantity(Double quantity) {
         this.quantity = Optional.ofNullable(quantity);
+    }
+
+    public BigDecimal getPrice() {
+        return this.job.getPrize(this.quantity);
     }
 
     @Override
