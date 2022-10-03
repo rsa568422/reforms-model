@@ -4,14 +4,14 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
-import sa.reforms.tasks.enums.TaskStatus;
-
 import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.StringJoiner;
 
 @Getter
 public class Task {
+
+    public enum TaskStatus { PENDING, DONE, CANCELED, REOPENED }
 
     @NonNull
     @Setter

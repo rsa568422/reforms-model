@@ -7,8 +7,6 @@ import lombok.Setter;
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
 
-import sa.reforms.enums.Guild;
-
 import java.math.BigDecimal;
 import java.util.Optional;
 

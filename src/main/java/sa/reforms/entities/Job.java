@@ -4,9 +4,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import sa.reforms.enums.Guild;
-
-import sa.reforms.enums.Guild;
 
 import java.util.Optional;
 import java.util.StringJoiner;
@@ -14,6 +11,8 @@ import java.util.StringJoiner;
 @Getter
 @RequiredArgsConstructor
 public class Job {
+
+    public enum Guild { PAINTWORK, BRICKWORK, PLUMBING, CARPENTRY, CLEANNESS }
 
     @NonNull
     @Setter

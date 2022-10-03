@@ -5,8 +5,6 @@ import lombok.NonNull;
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
 
-import sa.reforms.enums.Guild;
-
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;
