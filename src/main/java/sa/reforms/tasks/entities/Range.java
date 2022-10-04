@@ -4,20 +4,18 @@ import sa.reforms.exceptions.InvalidParamsException;
 
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.Setter;
 
 @Getter
-@Setter
 public class Range implements Comparable<Range> {
 
     @NonNull
-    private Double min;
+    private final Double min;
 
     @NonNull
-    private Double max;
+    private final Double max;
 
     public Range(@NonNull Double min, @NonNull Double max) {
-        if (min.compareTo(max) >= 0) throw new InvalidParamsException("Min can´t be greater than max");
+        if (max.compareTo(min) < 0) throw new InvalidParamsException("Min can´t be greater than max");
         this.min = min;
         this.max = max;
     }
