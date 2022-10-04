@@ -1,9 +1,11 @@
 package sa.reforms.tasks.entities.data;
 
-import sa.reforms.entities.Insurer;
+import sa.reforms.entities.Job;
 
-public class ContractedJobData extends JobData {
+public class ContractedJobData extends InsurerData {
 
-    public static final Insurer INSURER_A = new Insurer("Insurer_A");
+    public static Job JOB_PAINTWORK_PLASTIC(){
+        return JobData.JOB_PAINTWORK_PLASTIC();
+    }
 
 }

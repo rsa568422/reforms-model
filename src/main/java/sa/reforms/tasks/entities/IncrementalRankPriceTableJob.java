@@ -1,13 +1,10 @@
 package sa.reforms.tasks.entities;
 
-import lombok.NonNull;
-
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
-
-import sa.reforms.enums.Guild;
-
 import sa.reforms.exceptions.InvalidParamsException;
+
+import lombok.NonNull;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -31,13 +28,17 @@ public class IncrementalRankPriceTableJob extends PriceTableJob {
     }
 
     @Override
+    public boolean valid(Optional<Quantity> quantity) {
+        return quantity.map(qty -> qty.getMeasure().compareTo(0D) >= 0).orElse(false);
+    }
+
+    @Override
     public String toString() {
         String target = super.toString().substring(0, super.toString().indexOf("{"));
         return super.toString().replace(target, "IncrementalRankPriceTableJob");
     }
 
     private BigDecimal calculatePrice(Double quantity) {
-        if (quantity < 0) throw new InvalidParamsException("Quantity can't be negative");
         Range rank = this.priceTable
                 .entrySet()
                 .stream()

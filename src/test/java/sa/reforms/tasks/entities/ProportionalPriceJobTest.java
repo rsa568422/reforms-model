@@ -1,26 +1,26 @@
 package sa.reforms.tasks.entities;
 
+import sa.reforms.tasks.entities.data.ProportionalPriceJobData;
+import sa.reforms.exceptions.InvalidParamsException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import sa.reforms.exceptions.InvalidParamsException;
-
-import sa.reforms.tasks.entities.data.ProportionalJobData;
+import sa.reforms.tasks.entities.data.QuantityData;
 
 import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProportionalJobTest {
+class ProportionalPriceJobTest {
 
-    private ProportionalJob proportionalJob;
+    private ProportionalPriceJob proportionalPriceJob;
 
     @BeforeEach
     void setUp() {
-        this.proportionalJob = ProportionalJobData.PP_JOB_PAINTWORK_PLASTIC();
+        this.proportionalPriceJob = ProportionalPriceJobData.PP_JOB_PAINTWORK_PLASTIC();
     }
 
     @ParameterizedTest
@@ -29,7 +29,7 @@ class ProportionalJobTest {
         Optional<Double> quantity = Optional.of(Double.valueOf(stringQuantity));
         BigDecimal expected = new BigDecimal(stringExpected);
 
-        BigDecimal actual = this.proportionalJob.getPrize(quantity);
+        BigDecimal actual = this.proportionalPriceJob.getPrize(quantity);
 
         assertAll(
                 () -> assertEquals(0, expected.compareTo(actual)),
@@ -42,10 +42,10 @@ class ProportionalJobTest {
         Optional<Double> quantity = Optional.of(10.0);
         BigDecimal expected = new BigDecimal("40.00");
 
-        assertEquals(this.proportionalJob.getUnitPrice(), new BigDecimal("5.00"));
+        assertEquals(this.proportionalPriceJob.getUnitPrice(), new BigDecimal("5.00"));
 
-        this.proportionalJob.setUnitPrice(new BigDecimal("4.00"));
-        BigDecimal actual = this.proportionalJob.getPrize(quantity);
+        this.proportionalPriceJob.setUnitPrice(new BigDecimal("4.00"));
+        BigDecimal actual = this.proportionalPriceJob.getPrize(quantity);
 
         assertAll(
                 () -> assertEquals(0, expected.compareTo(actual)),
@@ -56,22 +56,26 @@ class ProportionalJobTest {
     @Test
     void test_getPrize_quantity_empty() {
         Optional<Double> quantity = Optional.empty();
-        assertThrows(InvalidParamsException.class, () -> this.proportionalJob.getPrize(quantity));
+        assertThrows(InvalidParamsException.class, () -> this.proportionalPriceJob.getPrize(quantity));
     }
 
     @Test
-    void test_getPrize_quantity_invalid() {
-        Optional<Double> quantity = Optional.of(-3.0);
-        assertThrows(InvalidParamsException.class, () -> this.proportionalJob.getPrize(quantity));
+    void test_valid() {
+        assertAll(
+                () -> assertFalse(this.proportionalPriceJob.valid(QuantityData.EMPTY())),
+                () -> assertTrue(this.proportionalPriceJob.valid(Optional.of(QuantityData.CASE_A(Quantity.Unit.EU)))),
+                () -> assertTrue(this.proportionalPriceJob.valid(Optional.of(QuantityData.CASE_B(Quantity.Unit.EU)))),
+                () -> assertTrue(this.proportionalPriceJob.valid(Optional.of(QuantityData.CASE_C(Quantity.Unit.EU))))
+        );
     }
 
     @Test
     void test_toString() {
-        String string = this.proportionalJob.toString();
+        String string = this.proportionalPriceJob.toString();
 
         assertAll(
                 () -> assertFalse(string.contains("ContractedJob")),
-                () -> assertTrue(string.contains("ProportionalJob")),
+                () -> assertTrue(string.contains("ProportionalPriceJob")),
                 () -> assertTrue(string.contains("guild")),
                 () -> assertTrue(string.contains("name")),
                 () -> assertFalse(string.contains("description")),

@@ -1,13 +1,10 @@
 package sa.reforms.tasks.entities;
 
-import lombok.NonNull;
-
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
-
-import sa.reforms.enums.Guild;
-
 import sa.reforms.exceptions.InvalidParamsException;
+
+import lombok.NonNull;
 
 import java.math.BigDecimal;
 import java.util.Map;

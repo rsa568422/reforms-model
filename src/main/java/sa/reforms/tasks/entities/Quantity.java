@@ -1,22 +1,26 @@
 package sa.reforms.tasks.entities;
 
+import sa.reforms.exceptions.InvalidParamsException;
+
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @Getter
-@Setter
-@RequiredArgsConstructor
 public class Quantity {
 
-    public enum Unit { EURO, M, M2, H }
+    public enum Unit { M, M2, H, EU }
 
     @NonNull
-    private Double measure;
+    private final Double measure;
 
     @NonNull
-    private Unit unit;
+    private final Unit unit;
+
+    public Quantity(@NonNull Double measure, @NonNull Unit unit) {
+        if (measure.compareTo(0D) <= 0) throw new InvalidParamsException("Measure can't be equals or less than zero");
+        this.measure = measure;
+        this.unit = unit;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,13 +1,10 @@
 package sa.reforms.tasks.entities;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
-
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
 
-import sa.reforms.enums.Guild;
+import lombok.Getter;
+import lombok.NonNull;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -16,8 +13,7 @@ import java.util.Optional;
 public abstract class ContractedJob extends Job {
 
     @NonNull
-    @Setter
-    private Insurer insurer;
+    private final Insurer insurer;
 
     public ContractedJob(@NonNull Insurer insurer, @NonNull Guild guild, @NonNull String name) {
         super(guild, name);
@@ -29,6 +25,8 @@ public abstract class ContractedJob extends Job {
     }
 
     public abstract BigDecimal getPrize(Optional<Double> quantity);
+
+    public abstract boolean valid(Optional<Quantity> quantity);
 
     @Override
     public String toString() {

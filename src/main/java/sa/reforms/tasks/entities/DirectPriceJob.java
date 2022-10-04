@@ -1,12 +1,10 @@
 package sa.reforms.tasks.entities;
 
-import lombok.NonNull;
-
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
-
-import sa.reforms.enums.Guild;
 import sa.reforms.exceptions.InvalidParamsException;
+
+import lombok.NonNull;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -19,14 +17,22 @@ public class DirectPriceJob extends ContractedJob {
     }
 
     public DirectPriceJob(@NonNull Insurer insurer, @NonNull Job job) {
-        this(insurer, job.getGuild(), job.getName());
+        super(insurer, job);
     }
 
     @Override
     public BigDecimal getPrize(Optional<Double> quantity) {
         BigDecimal qty = BigDecimal.valueOf(quantity.orElseThrow(() -> new InvalidParamsException("Quantity can't be null")));
-        if (qty.compareTo(BigDecimal.ZERO) <= 0) throw new InvalidParamsException("Quantity can't be negative");
         return qty.setScale(2, RoundingMode.CEILING);
+    }
+
+    @Override
+    public boolean valid(Optional<Quantity> quantity) {
+        if (quantity.isPresent()) {
+            Quantity qty = quantity.get();
+            return qty.getUnit().equals(Quantity.Unit.EU) && qty.getMeasure().compareTo(0D) >= 0;
+        }
+        return false;
     }
 
     @Override

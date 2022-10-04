@@ -1,11 +1,13 @@
 package sa.reforms.tasks.entities;
 
+import sa.reforms.tasks.entities.data.IncrementalRankPriceTableJobData;
+import sa.reforms.exceptions.InvalidParamsException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import sa.reforms.tasks.entities.data.IncrementalRankPriceTableJobData;
-import sa.reforms.exceptions.InvalidParamsException;
+import sa.reforms.tasks.entities.data.QuantityData;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -18,7 +20,7 @@ class IncrementalRankPriceTableJobTest {
 
     @BeforeEach
     void setUp() {
-        this.incrementalRankPriceTableJob = IncrementalRankPriceTableJobData.PT_JOB_PAINTWORK_PLASTIC();
+        this.incrementalRankPriceTableJob = IncrementalRankPriceTableJobData.IR_JOB_PAINTWORK_PLASTIC();
     }
 
     @ParameterizedTest
@@ -45,6 +47,16 @@ class IncrementalRankPriceTableJobTest {
     void test_getPrize_quantity_invalid() {
         Optional<Double> quantity = Optional.of(-3.0);
         assertThrows(InvalidParamsException.class, () -> this.incrementalRankPriceTableJob.getPrize(quantity));
+    }
+
+    @Test
+    void test_valid() {
+        assertAll(
+                () -> assertFalse(this.incrementalRankPriceTableJob.valid(QuantityData.EMPTY())),
+                () -> assertTrue(this.incrementalRankPriceTableJob.valid(Optional.of(QuantityData.CASE_A(Quantity.Unit.EU)))),
+                () -> assertTrue(this.incrementalRankPriceTableJob.valid(Optional.of(QuantityData.CASE_B(Quantity.Unit.EU)))),
+                () -> assertTrue(this.incrementalRankPriceTableJob.valid(Optional.of(QuantityData.CASE_C(Quantity.Unit.EU))))
+        );
     }
 
     @Test
