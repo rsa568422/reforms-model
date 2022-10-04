@@ -1,34 +1,31 @@
 package sa.reforms.tasks.entities;
 
+import sa.reforms.entities.Insurer;
+import sa.reforms.entities.Job;
+import sa.reforms.exceptions.InvalidParamsException;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-
-import sa.reforms.entities.Insurer;
-import sa.reforms.entities.Job;
-
-import sa.reforms.enums.Guild;
-
-import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Optional;
 
-public class ProportionalJob extends ContractedJob {
+public class ProportionalPriceJob extends ContractedJob {
 
     @NonNull
     @Getter
     @Setter
     private BigDecimal unitPrice;
 
-    public ProportionalJob(@NonNull Insurer insurer, @NonNull Guild guild,
-                           @NonNull String name, @NonNull BigDecimal unitPrice) {
+    public ProportionalPriceJob(@NonNull Insurer insurer, @NonNull Guild guild,
+                                @NonNull String name, @NonNull BigDecimal unitPrice) {
         super(insurer, guild, name);
         this.unitPrice = unitPrice;
     }
 
-    public ProportionalJob(@NonNull Insurer insurer, @NonNull Job job, @NonNull BigDecimal unitPrice) {
+    public ProportionalPriceJob(@NonNull Insurer insurer, @NonNull Job job, @NonNull BigDecimal unitPrice) {
         this(insurer, job.getGuild(), job.getName(), unitPrice);
     }
 
@@ -40,9 +37,14 @@ public class ProportionalJob extends ContractedJob {
     }
 
     @Override
+    public boolean valid(Optional<Quantity> quantity) {
+        return quantity.map(qty -> qty.getMeasure().compareTo(0.0) >= 0).orElse(false);
+    }
+
+    @Override
     public String toString() {
         String target = super.toString().substring(0, super.toString().indexOf("{"));
-        return super.toString().replace(target, "ProportionalJob");
+        return super.toString().replace(target, "ProportionalPriceJob");
     }
 
 }

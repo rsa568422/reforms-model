@@ -1,13 +1,13 @@
 package sa.reforms.tasks.entities;
 
+import sa.reforms.exceptions.InvalidParamsException;
+import sa.reforms.tasks.entities.data.DirectPriceJobData;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import sa.reforms.exceptions.InvalidParamsException;
-
-import sa.reforms.tasks.entities.data.DirectPriceJobData;
+import sa.reforms.tasks.entities.data.QuantityData;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -20,7 +20,7 @@ class DirectPriceJobTest {
 
     @BeforeEach
     void setUp() {
-        this.directPriceJob = DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC;
+        this.directPriceJob = DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC();
     }
 
     @ParameterizedTest
@@ -47,6 +47,17 @@ class DirectPriceJobTest {
     void test_getPrize_quantity_invalid() {
         Optional<Double> quantity = Optional.of(-3.0);
         assertThrows(InvalidParamsException.class, () -> this.directPriceJob.getPrize(quantity));
+    }
+
+    @Test
+    void test_valid() {
+        assertAll(
+                () -> assertFalse(this.directPriceJob.valid(QuantityData.EMPTY())),
+                () -> assertFalse(this.directPriceJob.valid(Optional.of(QuantityData.NEGATIVE(Quantity.Unit.EU)))),
+                () -> assertTrue(this.directPriceJob.valid(Optional.of(QuantityData.CASE_A(Quantity.Unit.EU)))),
+                () -> assertTrue(this.directPriceJob.valid(Optional.of(QuantityData.CASE_B(Quantity.Unit.EU)))),
+                () -> assertTrue(this.directPriceJob.valid(Optional.of(QuantityData.CASE_C(Quantity.Unit.EU))))
+        );
     }
 
     @Test

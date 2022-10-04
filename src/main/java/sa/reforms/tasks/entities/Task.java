@@ -1,10 +1,10 @@
 package sa.reforms.tasks.entities;
 
+import sa.reforms.exceptions.InvalidParamsException;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-
-import sa.reforms.tasks.enums.TaskStatus;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -13,8 +13,9 @@ import java.util.StringJoiner;
 @Getter
 public class Task {
 
+    public enum TaskStatus { PENDING, DONE, CANCELED, REOPENED }
+
     @NonNull
-    @Setter
     private ContractedJob job;
 
     @NonNull
@@ -27,12 +28,15 @@ public class Task {
         this.job = job;
     }
 
-    public Task(@NonNull ContractedJob job, Quantity quantity) {
-        this(job);
-        this.quantity = Optional.ofNullable(quantity);
+    public void setJob(@NonNull ContractedJob job) {
+        if (this.quantity.isPresent() && !job.valid(quantity))
+            throw new InvalidParamsException("Invalid quantity for the new Job");
+        this.job = job;
     }
 
     public void setQuantity(Quantity quantity) {
+        if (!this.job.valid(Optional.ofNullable(quantity)))
+            throw new InvalidParamsException("Invalid quantity");
         this.quantity = Optional.ofNullable(quantity);
     }
 
@@ -48,13 +52,15 @@ public class Task {
         Task task = (Task) o;
 
         if (!getJob().equals(task.getJob())) return false;
-        return getQuantity().isPresent() ? getQuantity().equals(task.getQuantity()) : task.getQuantity().isEmpty();
+        if (getStatus() != task.getStatus()) return false;
+        return getQuantity().equals(task.getQuantity());
     }
 
     @Override
     public int hashCode() {
         int result = getJob().hashCode();
-        result = 31 * result + (getQuantity().isPresent() ? getQuantity().hashCode() : 0);
+        result = 31 * result + getStatus().hashCode();
+        result = 31 * result + getQuantity().hashCode();
         return result;
     }
 

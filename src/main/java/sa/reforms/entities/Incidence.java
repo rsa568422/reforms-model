@@ -1,12 +1,11 @@
 package sa.reforms.entities;
 
+import sa.reforms.exceptions.InvalidParamsException;
+import sa.reforms.tasks.entities.Task;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-
-import sa.reforms.exceptions.InvalidParamsException;
-
-import sa.reforms.tasks.entities.Task;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

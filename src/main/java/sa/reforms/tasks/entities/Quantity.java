@@ -10,7 +10,7 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class Quantity {
 
-    public enum Unit { EURO, M, M2, H }
+    public enum Unit { M, M2, H, EU }
 
     @NonNull
     private Double measure;
