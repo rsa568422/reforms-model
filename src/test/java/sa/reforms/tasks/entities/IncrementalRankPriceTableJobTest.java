@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import sa.reforms.tasks.entities.data.QuantityData;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -46,6 +47,17 @@ class IncrementalRankPriceTableJobTest {
     void test_getPrize_quantity_invalid() {
         Optional<Double> quantity = Optional.of(-3.0);
         assertThrows(InvalidParamsException.class, () -> this.incrementalRankPriceTableJob.getPrize(quantity));
+    }
+
+    @Test
+    void test_valid() {
+        assertAll(
+                () -> assertFalse(this.incrementalRankPriceTableJob.valid(QuantityData.EMPTY())),
+                () -> assertFalse(this.incrementalRankPriceTableJob.valid(Optional.of(QuantityData.NEGATIVE(Quantity.Unit.EU)))),
+                () -> assertTrue(this.incrementalRankPriceTableJob.valid(Optional.of(QuantityData.CASE_A(Quantity.Unit.EU)))),
+                () -> assertTrue(this.incrementalRankPriceTableJob.valid(Optional.of(QuantityData.CASE_B(Quantity.Unit.EU)))),
+                () -> assertTrue(this.incrementalRankPriceTableJob.valid(Optional.of(QuantityData.CASE_C(Quantity.Unit.EU))))
+        );
     }
 
     @Test

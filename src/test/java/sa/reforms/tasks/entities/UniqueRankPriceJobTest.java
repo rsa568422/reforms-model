@@ -1,5 +1,6 @@
 package sa.reforms.tasks.entities;
 
+import sa.reforms.tasks.entities.data.QuantityData;
 import sa.reforms.tasks.entities.data.UniqueRankPriceTableJobData;
 import sa.reforms.exceptions.InvalidParamsException;
 
@@ -46,6 +47,17 @@ class UniqueRankPriceJobTest {
     void test_getPrize_quantity_invalid() {
         Optional<Double> quantity = Optional.of(-3.0);
         assertThrows(InvalidParamsException.class, () -> this.uniqueRankPriceJob.getPrize(quantity));
+    }
+
+    @Test
+    void test_valid() {
+        assertAll(
+                () -> assertFalse(this.uniqueRankPriceJob.valid(QuantityData.EMPTY())),
+                () -> assertFalse(this.uniqueRankPriceJob.valid(Optional.of(QuantityData.NEGATIVE(Quantity.Unit.EU)))),
+                () -> assertTrue(this.uniqueRankPriceJob.valid(Optional.of(QuantityData.CASE_A(Quantity.Unit.EU)))),
+                () -> assertTrue(this.uniqueRankPriceJob.valid(Optional.of(QuantityData.CASE_B(Quantity.Unit.EU)))),
+                () -> assertTrue(this.uniqueRankPriceJob.valid(Optional.of(QuantityData.CASE_C(Quantity.Unit.EU))))
+        );
     }
 
     @Test

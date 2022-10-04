@@ -2,6 +2,7 @@ package sa.reforms.tasks.entities;
 
 import sa.reforms.exceptions.InvalidParamsException;
 import sa.reforms.tasks.entities.data.DirectPriceJobData;
+import sa.reforms.tasks.entities.data.ProportionalPriceJobData;
 import sa.reforms.tasks.entities.data.QuantityData;
 
 import org.junit.jupiter.api.Test;
@@ -176,6 +177,16 @@ class TaskTest {
         assertEquals(task1.getStatus(), task2.getStatus());
         assertEquals(task2.getStatus(), task1.getStatus());
         assertEquals(task2.getStatus(), task2.getStatus());
+    }
+
+    @Test
+    void test_setJob_unit() {
+        Task task1 = new Task(ProportionalPriceJobData.PP_JOB_PAINTWORK_PLASTIC());
+        task1.setQuantity(QuantityData.CASE_A(Quantity.Unit.M2));
+
+        Exception exception = assertThrows(InvalidParamsException.class, () -> task1.setJob(DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC()));
+
+        assertEquals(InvalidParamsException.class, exception.getClass());
     }
 
     private static BigDecimal getExpected(Double value) {
