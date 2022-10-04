@@ -1,5 +1,7 @@
 package sa.reforms.tasks.entities;
 
+import sa.reforms.exceptions.InvalidParamsException;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -29,10 +31,14 @@ public class Task {
 
     public Task(@NonNull ContractedJob job, Quantity quantity) {
         this(job);
+        if (job instanceof DirectPriceJob && isNotEu(quantity))
+            throw new InvalidParamsException("Quantity only can be EU for DirectPriceJob");
         this.quantity = Optional.ofNullable(quantity);
     }
 
     public void setQuantity(Quantity quantity) {
+        if (job instanceof DirectPriceJob && isNotEu(quantity))
+            throw new InvalidParamsException("Quantity only can be EU for DirectPriceJob");
         this.quantity = Optional.ofNullable(quantity);
     }
 
@@ -48,13 +54,15 @@ public class Task {
         Task task = (Task) o;
 
         if (!getJob().equals(task.getJob())) return false;
-        return getQuantity().isPresent() ? getQuantity().equals(task.getQuantity()) : task.getQuantity().isEmpty();
+        if (getStatus() != task.getStatus()) return false;
+        return getQuantity().equals(task.getQuantity());
     }
 
     @Override
     public int hashCode() {
         int result = getJob().hashCode();
-        result = 31 * result + (getQuantity().isPresent() ? getQuantity().hashCode() : 0);
+        result = 31 * result + getStatus().hashCode();
+        result = 31 * result + getQuantity().hashCode();
         return result;
     }
 
@@ -65,6 +73,11 @@ public class Task {
         joiner.add(String.format("status:%s", this.status));
         this.quantity.ifPresent(quantity -> joiner.add(String.format("quantity:%s", this.quantity)));
         return joiner.toString();
+    }
+
+    private static boolean isNotEu(Quantity quantity) {
+        Optional<Quantity> optionalQuantity = Optional.ofNullable(quantity);
+        return optionalQuantity.map(qty -> !qty.getUnit().equals(Quantity.Unit.EU)).orElse(false);
     }
 
 }
