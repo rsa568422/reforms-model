@@ -94,7 +94,6 @@ class TaskTest {
 
     @Test
     void testGePrizeEmpty() {
-        Optional<Quantity> empty = QuantityData.EMPTY();
         when(this.contractedJob.valid(argThat(Optional::isEmpty))).thenReturn(false);
 
         Exception exception = assertThrows(InvalidParamsException.class, () -> this.task.setQuantity(null));
@@ -181,10 +180,6 @@ class TaskTest {
 
     private static BigDecimal getExpected(Double value) {
         return BigDecimal.valueOf(value).setScale(2, RoundingMode.CEILING);
-    }
-
-    private boolean existAndIsPositive(Optional<Quantity> value) {
-        return value.map(Quantity::getMeasure).map(val -> val.compareTo(0D) >= 0).orElse(false);
     }
 
 }

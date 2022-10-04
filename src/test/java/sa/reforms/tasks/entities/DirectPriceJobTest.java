@@ -44,12 +44,6 @@ class DirectPriceJobTest {
     }
 
     @Test
-    void test_getPrize_quantity_invalid() {
-        Optional<Double> quantity = Optional.of(-3.0);
-        assertThrows(InvalidParamsException.class, () -> this.directPriceJob.getPrize(quantity));
-    }
-
-    @Test
     void test_valid() {
         assertAll(
                 () -> assertFalse(this.directPriceJob.valid(QuantityData.EMPTY())),
