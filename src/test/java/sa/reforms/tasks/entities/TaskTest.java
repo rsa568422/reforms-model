@@ -1,9 +1,9 @@
 package sa.reforms.tasks.entities;
 
-import sa.reforms.exceptions.InvalidParamsException;
 import sa.reforms.tasks.entities.data.DirectPriceJobData;
 import sa.reforms.tasks.entities.data.ProportionalPriceJobData;
 import sa.reforms.tasks.entities.data.QuantityData;
+import sa.reforms.exceptions.InvalidParamsException;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
