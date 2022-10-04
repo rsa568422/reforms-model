@@ -1,7 +1,6 @@
 package sa.reforms.tasks.entities;
 
 import sa.reforms.exceptions.InvalidParamsException;
-
 import sa.reforms.tasks.entities.data.ProportionalPriceJobData;
 
 import org.junit.jupiter.api.BeforeEach;

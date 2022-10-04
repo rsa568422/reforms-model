@@ -2,7 +2,6 @@ package sa.reforms.tasks.entities;
 
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
-
 import sa.reforms.exceptions.InvalidParamsException;
 
 import lombok.Getter;
@@ -35,6 +34,11 @@ public class ProportionalPriceJob extends ContractedJob {
         BigDecimal qty = BigDecimal.valueOf(quantity.orElseThrow(() -> new InvalidParamsException("Quantity can't be null")));
         if (qty.compareTo(BigDecimal.ZERO) <= 0) throw new InvalidParamsException("Quantity can't be negative");
         return this.unitPrice.multiply(qty).setScale(2, RoundingMode.CEILING);
+    }
+
+    @Override
+    public boolean valid(Optional<Quantity> quantity) {
+        return quantity.map(qty -> qty.getMeasure().compareTo(0.0) >= 0).orElse(false);
     }
 
     @Override

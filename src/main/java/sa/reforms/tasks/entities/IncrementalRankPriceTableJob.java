@@ -1,11 +1,10 @@
 package sa.reforms.tasks.entities;
 
-import lombok.NonNull;
-
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
-
 import sa.reforms.exceptions.InvalidParamsException;
+
+import lombok.NonNull;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -26,6 +25,11 @@ public class IncrementalRankPriceTableJob extends PriceTableJob {
     @Override
     public BigDecimal getPrize(Optional<Double> quantity) {
         return calculatePrice(quantity.orElseThrow(() -> new InvalidParamsException("Quantity can't be null")));
+    }
+
+    @Override
+    public boolean valid(Optional<Quantity> quantity) {
+        return quantity.map(qty -> qty.getMeasure().compareTo(0.0) >= 0).orElse(false);
     }
 
     @Override

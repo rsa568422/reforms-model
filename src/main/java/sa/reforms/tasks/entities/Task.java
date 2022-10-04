@@ -16,7 +16,6 @@ public class Task {
     public enum TaskStatus { PENDING, DONE, CANCELED, REOPENED }
 
     @NonNull
-    @Setter
     private ContractedJob job;
 
     @NonNull
@@ -29,16 +28,15 @@ public class Task {
         this.job = job;
     }
 
-    public Task(@NonNull ContractedJob job, Quantity quantity) {
-        this(job);
-        if (job instanceof DirectPriceJob && isNotEu(quantity))
-            throw new InvalidParamsException("Quantity only can be EU for DirectPriceJob");
-        this.quantity = Optional.ofNullable(quantity);
+    public void setJob(@NonNull ContractedJob job) {
+        if (this.quantity.isPresent() && !job.valid(quantity))
+            throw new InvalidParamsException("Invalid quantity for the new Job");
+        this.job = job;
     }
 
     public void setQuantity(Quantity quantity) {
-        if (job instanceof DirectPriceJob && isNotEu(quantity))
-            throw new InvalidParamsException("Quantity only can be EU for DirectPriceJob");
+        if (!this.job.valid(Optional.ofNullable(quantity)))
+            throw new InvalidParamsException("Invalid quantity");
         this.quantity = Optional.ofNullable(quantity);
     }
 
@@ -73,11 +71,6 @@ public class Task {
         joiner.add(String.format("status:%s", this.status));
         this.quantity.ifPresent(quantity -> joiner.add(String.format("quantity:%s", this.quantity)));
         return joiner.toString();
-    }
-
-    private static boolean isNotEu(Quantity quantity) {
-        Optional<Quantity> optionalQuantity = Optional.ofNullable(quantity);
-        return optionalQuantity.map(qty -> !qty.getUnit().equals(Quantity.Unit.EU)).orElse(false);
     }
 
 }

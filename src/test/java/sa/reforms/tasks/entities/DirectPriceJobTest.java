@@ -1,13 +1,12 @@
 package sa.reforms.tasks.entities;
 
+import sa.reforms.exceptions.InvalidParamsException;
+import sa.reforms.tasks.entities.data.DirectPriceJobData;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import sa.reforms.exceptions.InvalidParamsException;
-
-import sa.reforms.tasks.entities.data.DirectPriceJobData;
 
 import java.math.BigDecimal;
 import java.util.Optional;
