@@ -53,7 +53,6 @@ class DirectPriceJobTest {
     void test_valid() {
         assertAll(
                 () -> assertFalse(this.directPriceJob.valid(QuantityData.EMPTY())),
-                () -> assertFalse(this.directPriceJob.valid(Optional.of(QuantityData.NEGATIVE(Quantity.Unit.EU)))),
                 () -> assertTrue(this.directPriceJob.valid(Optional.of(QuantityData.CASE_A(Quantity.Unit.EU)))),
                 () -> assertTrue(this.directPriceJob.valid(Optional.of(QuantityData.CASE_B(Quantity.Unit.EU)))),
                 () -> assertTrue(this.directPriceJob.valid(Optional.of(QuantityData.CASE_C(Quantity.Unit.EU))))

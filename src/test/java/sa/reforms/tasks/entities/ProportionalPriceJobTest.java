@@ -69,7 +69,6 @@ class ProportionalPriceJobTest {
     void test_valid() {
         assertAll(
                 () -> assertFalse(this.proportionalPriceJob.valid(QuantityData.EMPTY())),
-                () -> assertFalse(this.proportionalPriceJob.valid(Optional.of(QuantityData.NEGATIVE(Quantity.Unit.EU)))),
                 () -> assertTrue(this.proportionalPriceJob.valid(Optional.of(QuantityData.CASE_A(Quantity.Unit.EU)))),
                 () -> assertTrue(this.proportionalPriceJob.valid(Optional.of(QuantityData.CASE_B(Quantity.Unit.EU)))),
                 () -> assertTrue(this.proportionalPriceJob.valid(Optional.of(QuantityData.CASE_C(Quantity.Unit.EU))))

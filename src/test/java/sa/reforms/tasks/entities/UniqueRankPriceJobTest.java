@@ -53,7 +53,6 @@ class UniqueRankPriceJobTest {
     void test_valid() {
         assertAll(
                 () -> assertFalse(this.uniqueRankPriceJob.valid(QuantityData.EMPTY())),
-                () -> assertFalse(this.uniqueRankPriceJob.valid(Optional.of(QuantityData.NEGATIVE(Quantity.Unit.EU)))),
                 () -> assertTrue(this.uniqueRankPriceJob.valid(Optional.of(QuantityData.CASE_A(Quantity.Unit.EU)))),
                 () -> assertTrue(this.uniqueRankPriceJob.valid(Optional.of(QuantityData.CASE_B(Quantity.Unit.EU)))),
                 () -> assertTrue(this.uniqueRankPriceJob.valid(Optional.of(QuantityData.CASE_C(Quantity.Unit.EU))))

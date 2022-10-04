@@ -23,7 +23,6 @@ public class DirectPriceJob extends ContractedJob {
     @Override
     public BigDecimal getPrize(Optional<Double> quantity) {
         BigDecimal qty = BigDecimal.valueOf(quantity.orElseThrow(() -> new InvalidParamsException("Quantity can't be null")));
-        if (qty.compareTo(BigDecimal.ZERO) <= 0) throw new InvalidParamsException("Quantity can't be negative");
         return qty.setScale(2, RoundingMode.CEILING);
     }
 
@@ -31,7 +30,7 @@ public class DirectPriceJob extends ContractedJob {
     public boolean valid(Optional<Quantity> quantity) {
         if (quantity.isPresent()) {
             Quantity qty = quantity.get();
-            return qty.getUnit().equals(Quantity.Unit.EU) && qty.getMeasure().compareTo(0.0) >= 0;
+            return qty.getUnit().equals(Quantity.Unit.EU) && qty.getMeasure().compareTo(0D) >= 0;
         }
         return false;
     }

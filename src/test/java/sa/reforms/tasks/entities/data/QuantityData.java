@@ -18,10 +18,6 @@ public class QuantityData {
         return new Quantity(50.0, unit);
     }
 
-    public static Quantity NEGATIVE(Quantity.Unit unit) {
-        return new Quantity(-3.0, unit);
-    }
-
     public static Optional<Quantity> EMPTY() {
         return Optional.empty();
     }

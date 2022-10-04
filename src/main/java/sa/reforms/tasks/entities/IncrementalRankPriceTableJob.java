@@ -29,7 +29,7 @@ public class IncrementalRankPriceTableJob extends PriceTableJob {
 
     @Override
     public boolean valid(Optional<Quantity> quantity) {
-        return quantity.map(qty -> qty.getMeasure().compareTo(0.0) >= 0).orElse(false);
+        return quantity.map(qty -> qty.getMeasure().compareTo(0D) >= 0).orElse(false);
     }
 
     @Override
@@ -39,7 +39,6 @@ public class IncrementalRankPriceTableJob extends PriceTableJob {
     }
 
     private BigDecimal calculatePrice(Double quantity) {
-        if (quantity < 0) throw new InvalidParamsException("Quantity can't be negative");
         Range rank = this.priceTable
                 .entrySet()
                 .stream()

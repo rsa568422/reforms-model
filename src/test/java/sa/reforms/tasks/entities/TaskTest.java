@@ -93,16 +93,6 @@ class TaskTest {
     }
 
     @Test
-    void testGePrizeNegative() {
-        Quantity negative = QuantityData.NEGATIVE(Quantity.Unit.EU);
-        when(this.contractedJob.valid(argThat(a -> !existAndIsPositive(a)))).thenReturn(false);
-
-        Exception exception = assertThrows(InvalidParamsException.class, () -> this.task.setQuantity(negative));
-
-        assertEquals(InvalidParamsException.class, exception.getClass());
-    }
-
-    @Test
     void testGePrizeEmpty() {
         Optional<Quantity> empty = QuantityData.EMPTY();
         when(this.contractedJob.valid(argThat(Optional::isEmpty))).thenReturn(false);
@@ -194,7 +184,7 @@ class TaskTest {
     }
 
     private boolean existAndIsPositive(Optional<Quantity> value) {
-        return value.map(Quantity::getMeasure).map(val -> val.compareTo(0.0) >= 0).orElse(false);
+        return value.map(Quantity::getMeasure).map(val -> val.compareTo(0D) >= 0).orElse(false);
     }
 
 }
