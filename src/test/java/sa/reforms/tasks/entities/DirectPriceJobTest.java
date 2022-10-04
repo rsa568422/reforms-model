@@ -66,6 +66,12 @@ class DirectPriceJobTest {
     }
 
     @Test
+    void test_get_insurer() {
+        DirectPriceJob job = DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC();
+        assertEquals(InsurerData.INSURER_A(), job.getInsurer());
+    }
+
+    @Test
     void test_toString() {
         String string = this.directPriceJob.toString();
 
