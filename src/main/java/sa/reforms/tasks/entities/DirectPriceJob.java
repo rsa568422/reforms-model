@@ -17,7 +17,7 @@ public class DirectPriceJob extends ContractedJob {
     }
 
     public DirectPriceJob(@NonNull Insurer insurer, @NonNull Job job) {
-        this(insurer, job.getGuild(), job.getName());
+        super(insurer, job);
     }
 
     @Override

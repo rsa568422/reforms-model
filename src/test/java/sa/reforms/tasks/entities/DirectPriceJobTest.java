@@ -1,13 +1,16 @@
 package sa.reforms.tasks.entities;
 
-import sa.reforms.exceptions.InvalidParamsException;
+import sa.reforms.entities.Job;
 import sa.reforms.tasks.entities.data.DirectPriceJobData;
+import sa.reforms.tasks.entities.data.InsurerData;
+import sa.reforms.tasks.entities.data.JobData;
+import sa.reforms.tasks.entities.data.QuantityData;
+import sa.reforms.exceptions.InvalidParamsException;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import sa.reforms.tasks.entities.data.QuantityData;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -51,6 +54,15 @@ class DirectPriceJobTest {
                 () -> assertTrue(this.directPriceJob.valid(Optional.of(QuantityData.CASE_B(Quantity.Unit.EU)))),
                 () -> assertTrue(this.directPriceJob.valid(Optional.of(QuantityData.CASE_C(Quantity.Unit.EU))))
         );
+    }
+
+    @Test
+    void test_constructors() {
+        Job job = JobData.JOB_PAINTWORK_PLASTIC();
+        DirectPriceJob jobA = new DirectPriceJob(InsurerData.INSURER_A(), job.getGuild(), job.getName());
+        DirectPriceJob jobB = new DirectPriceJob(InsurerData.INSURER_A(), JobData.JOB_PAINTWORK_PLASTIC());
+
+        assertEquals(jobA.toString(), jobB.toString());
     }
 
     @Test
