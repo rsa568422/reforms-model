@@ -1,4 +1,4 @@
-package sa.reforms.tasks.entities.exceptions;
+package sa.reforms.tasks.exceptions;
 
 import sa.reforms.exceptions.ReformsException;
 

@@ -1,4 +1,4 @@
-package sa.reforms.tasks.entities;
+package sa.reforms.tasks.quatities;
 
 import sa.reforms.exceptions.InvalidParamsException;
 

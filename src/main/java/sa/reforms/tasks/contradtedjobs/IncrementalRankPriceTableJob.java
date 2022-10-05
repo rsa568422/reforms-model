@@ -1,5 +1,7 @@
-package sa.reforms.tasks.entities;
+package sa.reforms.tasks.contradtedjobs;
 
+import sa.reforms.tasks.quatities.Quantity;
+import sa.reforms.tasks.quatities.Range;
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
 import sa.reforms.exceptions.InvalidParamsException;
@@ -12,13 +14,13 @@ import java.util.function.Function;
 
 import lombok.NonNull;
 
-public class UniqueRankPriceJob extends PriceTableJob {
+public class IncrementalRankPriceTableJob extends PriceTableJob {
 
-    public UniqueRankPriceJob(@NonNull Insurer insurer, @NonNull Guild guild, @NonNull String name, @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
+    public IncrementalRankPriceTableJob(@NonNull Insurer insurer, @NonNull Guild guild, @NonNull String name, @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
         super(insurer, guild, name, priceTable);
     }
 
-    public UniqueRankPriceJob(@NonNull Insurer insurer, @NonNull Job job, @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
+    public IncrementalRankPriceTableJob(@NonNull Insurer insurer, @NonNull Job job, @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
         super(insurer, job, priceTable);
     }
 
@@ -35,18 +37,24 @@ public class UniqueRankPriceJob extends PriceTableJob {
     @Override
     public String toString() {
         String target = super.toString().substring(0, super.toString().indexOf("{"));
-        return super.toString().replace(target, "UniqueRankPriceJob");
+        return super.toString().replace(target, "IncrementalRankPriceTableJob");
     }
 
     private BigDecimal calculatePrice(Double quantity) {
-        return this.priceTable
+        Range rank = this.priceTable
                 .entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().contains(quantity))
-                .min(Map.Entry.comparingByKey())
+                .findAny()
+                .map(Map.Entry::getKey)
+                .orElseThrow(() -> new InvalidParamsException("No rank registered for that quantity"));
+        return this.priceTable
+                .entrySet()
+                .stream()
+                .filter(entry -> entry.getKey().compareTo(rank) <= 0)
                 .map(Map.Entry::getValue)
                 .map(function -> function.apply(quantity))
-                .orElseThrow(() -> new InvalidParamsException("No rank registered for that quantity"))
+                .reduce(new BigDecimal("0.00"), BigDecimal::add)
                 .setScale(2, RoundingMode.CEILING);
     }
 

@@ -1,4 +1,4 @@
-package sa.reforms.tasks.entities.data;
+package sa.reforms.tasks.data;
 
 import sa.reforms.entities.Job;
 

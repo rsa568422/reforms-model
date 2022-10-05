@@ -1,5 +1,7 @@
-package sa.reforms.tasks.entities;
+package sa.reforms.tasks;
 
+import sa.reforms.tasks.quatities.Quantity;
+import sa.reforms.tasks.contradtedjobs.DirectPriceJob;
 import sa.reforms.entities.Job;
 import sa.reforms.exceptions.InvalidParamsException;
 
@@ -12,8 +14,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static sa.reforms.tasks.entities.data.DirectPriceJobData.*;
-import static sa.reforms.tasks.entities.data.QuantityData.*;
+import static sa.reforms.tasks.data.DirectPriceJobData.*;
+import static sa.reforms.tasks.data.QuantityData.*;
 
 class DirectPriceJobTest {
 

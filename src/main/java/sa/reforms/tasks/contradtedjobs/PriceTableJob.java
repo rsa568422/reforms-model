@@ -1,5 +1,6 @@
-package sa.reforms.tasks.entities;
+package sa.reforms.tasks.contradtedjobs;
 
+import sa.reforms.tasks.quatities.Range;
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
 import sa.reforms.exceptions.InvalidParamsException;

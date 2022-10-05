@@ -1,7 +1,7 @@
-package sa.reforms.tasks.entities;
+package sa.reforms.tasks.quatities;
 
 import sa.reforms.exceptions.InvalidParamsException;
-import sa.reforms.tasks.entities.exceptions.ComparisonException;
+import sa.reforms.tasks.exceptions.ComparisonException;
 
 import lombok.Getter;
 import lombok.NonNull;

@@ -1,6 +1,6 @@
-package sa.reforms.tasks.entities.data;
+package sa.reforms.tasks.data;
 
-import sa.reforms.tasks.entities.Range;
+import sa.reforms.tasks.quatities.Range;
 
 import java.math.BigDecimal;
 import java.util.HashMap;

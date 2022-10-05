@@ -1,5 +1,7 @@
-package sa.reforms.tasks.entities;
+package sa.reforms.tasks;
 
+import sa.reforms.tasks.quatities.Quantity;
+import sa.reforms.tasks.contradtedjobs.ContractedJob;
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;

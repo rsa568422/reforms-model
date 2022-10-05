@@ -1,6 +1,6 @@
-package sa.reforms.tasks.entities.data;
+package sa.reforms.tasks.data;
 
-import sa.reforms.tasks.entities.Quantity;
+import sa.reforms.tasks.quatities.Quantity;
 
 import java.util.Optional;
 

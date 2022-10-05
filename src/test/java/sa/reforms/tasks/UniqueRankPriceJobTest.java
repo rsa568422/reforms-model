@@ -1,7 +1,8 @@
-package sa.reforms.tasks.entities;
+package sa.reforms.tasks;
 
 import sa.reforms.entities.Job;
-import sa.reforms.tasks.entities.data.QuantityData;
+import sa.reforms.tasks.quatities.Quantity;
+import sa.reforms.tasks.contradtedjobs.UniqueRankPriceJob;
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;
@@ -13,7 +14,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static sa.reforms.tasks.entities.data.UniqueRankPriceTableJobData.*;
+import static sa.reforms.tasks.data.QuantityData.*;
+import static sa.reforms.tasks.data.UniqueRankPriceTableJobData.*;
 
 class UniqueRankPriceJobTest {
 
@@ -65,10 +67,10 @@ class UniqueRankPriceJobTest {
     @Test
     void test_valid() {
         assertAll(
-                () -> assertFalse(this.uniqueRankPriceJob.valid(QuantityData.EMPTY())),
-                () -> assertTrue(this.uniqueRankPriceJob.valid(Optional.of(QuantityData.CASE_A(Quantity.Unit.EU)))),
-                () -> assertTrue(this.uniqueRankPriceJob.valid(Optional.of(QuantityData.CASE_B(Quantity.Unit.EU)))),
-                () -> assertTrue(this.uniqueRankPriceJob.valid(Optional.of(QuantityData.CASE_C(Quantity.Unit.EU))))
+                () -> assertFalse(this.uniqueRankPriceJob.valid(EMPTY())),
+                () -> assertTrue(this.uniqueRankPriceJob.valid(Optional.of(CASE_A(Quantity.Unit.EU)))),
+                () -> assertTrue(this.uniqueRankPriceJob.valid(Optional.of(CASE_B(Quantity.Unit.EU)))),
+                () -> assertTrue(this.uniqueRankPriceJob.valid(Optional.of(CASE_C(Quantity.Unit.EU))))
         );
     }
 
