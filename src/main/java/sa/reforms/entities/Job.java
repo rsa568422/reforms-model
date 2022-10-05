@@ -1,12 +1,12 @@
 package sa.reforms.entities;
 
+import java.util.Optional;
+import java.util.StringJoiner;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-
-import java.util.Optional;
-import java.util.StringJoiner;
 
 @Getter
 @RequiredArgsConstructor

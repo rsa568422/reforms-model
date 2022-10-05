@@ -4,13 +4,13 @@ import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
 import sa.reforms.exceptions.InvalidParamsException;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Optional;
+
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 
 public class ProportionalPriceJob extends ContractedJob {
 

@@ -1,13 +1,12 @@
 package sa.reforms;
 
-import sa.reforms.entities.*;
-
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import sa.reforms.entities.*;
 public class Main {
 
     public static void main(String... args) {

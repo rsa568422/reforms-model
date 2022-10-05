@@ -1,18 +1,19 @@
 package sa.reforms.tasks.entities;
 
+import sa.reforms.entities.Job;
 import sa.reforms.tasks.entities.data.QuantityData;
-import sa.reforms.tasks.entities.data.UniqueRankPriceTableJobData;
 import sa.reforms.exceptions.InvalidParamsException;
+
+import java.math.BigDecimal;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.math.BigDecimal;
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
+import static sa.reforms.tasks.entities.data.UniqueRankPriceTableJobData.*;
 
 class UniqueRankPriceJobTest {
 
@@ -20,7 +21,19 @@ class UniqueRankPriceJobTest {
 
     @BeforeEach
     void setUp() {
-        this.uniqueRankPriceJob = UniqueRankPriceTableJobData.UR_JOB_PAINTWORK_PLASTIC();
+        this.uniqueRankPriceJob = UR_JOB_PAINTWORK_PLASTIC();
+    }
+
+    @Test
+    void test_constructor_and_override_methods() {
+        Job job = JOB_PAINTWORK_PLASTIC();
+        UniqueRankPriceJob expected = UR_JOB_PAINTWORK_PLASTIC();
+        UniqueRankPriceJob actual = new UniqueRankPriceJob(INSURER_A(), job.getGuild(), job.getName(), RANKS_MAP());
+        assertAll(
+                () -> assertEquals(expected, actual),
+                () -> assertEquals(expected.hashCode(), actual.hashCode()),
+                () -> assertEquals(expected.toString(), actual.toString())
+        );
     }
 
     @ParameterizedTest

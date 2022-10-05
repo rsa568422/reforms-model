@@ -1,18 +1,18 @@
 package sa.reforms.tasks.entities;
 
-import sa.reforms.tasks.entities.data.IncrementalRankPriceTableJobData;
 import sa.reforms.exceptions.InvalidParamsException;
+
+import java.math.BigDecimal;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import sa.reforms.tasks.entities.data.QuantityData;
-
-import java.math.BigDecimal;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static sa.reforms.tasks.entities.data.IncrementalRankPriceTableJobData.*;
+import static sa.reforms.tasks.entities.data.QuantityData.*;
 
 class IncrementalRankPriceTableJobTest {
 
@@ -20,7 +20,24 @@ class IncrementalRankPriceTableJobTest {
 
     @BeforeEach
     void setUp() {
-        this.incrementalRankPriceTableJob = IncrementalRankPriceTableJobData.IR_JOB_PAINTWORK_PLASTIC();
+        this.incrementalRankPriceTableJob = IR_JOB_PAINTWORK_PLASTIC();
+    }
+
+    @Test
+    void test_constructor_and_override_methods() {
+        IncrementalRankPriceTableJob expected = IR_JOB_PAINTWORK_PLASTIC();
+        IncrementalRankPriceTableJob actual = new IncrementalRankPriceTableJob(
+                INSURER_A(),
+                JOB_PAINTWORK_PLASTIC().getGuild(),
+                JOB_PAINTWORK_PLASTIC().getName(),
+                RANKS_MAP()
+        );
+
+        assertAll(
+                () -> assertEquals(expected, actual),
+                () -> assertEquals(expected.hashCode(), actual.hashCode()),
+                () -> assertEquals(expected.toString(), actual.toString())
+        );
     }
 
     @ParameterizedTest
@@ -52,10 +69,10 @@ class IncrementalRankPriceTableJobTest {
     @Test
     void test_valid() {
         assertAll(
-                () -> assertFalse(this.incrementalRankPriceTableJob.valid(QuantityData.EMPTY())),
-                () -> assertTrue(this.incrementalRankPriceTableJob.valid(Optional.of(QuantityData.CASE_A(Quantity.Unit.EU)))),
-                () -> assertTrue(this.incrementalRankPriceTableJob.valid(Optional.of(QuantityData.CASE_B(Quantity.Unit.EU)))),
-                () -> assertTrue(this.incrementalRankPriceTableJob.valid(Optional.of(QuantityData.CASE_C(Quantity.Unit.EU))))
+                () -> assertFalse(this.incrementalRankPriceTableJob.valid(EMPTY())),
+                () -> assertTrue(this.incrementalRankPriceTableJob.valid(Optional.of(CASE_A(Quantity.Unit.EU)))),
+                () -> assertTrue(this.incrementalRankPriceTableJob.valid(Optional.of(CASE_B(Quantity.Unit.EU)))),
+                () -> assertTrue(this.incrementalRankPriceTableJob.valid(Optional.of(CASE_C(Quantity.Unit.EU))))
         );
     }
 

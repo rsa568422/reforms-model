@@ -1,9 +1,10 @@
 package sa.reforms.tasks.entities;
 
-import sa.reforms.tasks.entities.data.DirectPriceJobData;
-import sa.reforms.tasks.entities.data.ProportionalPriceJobData;
-import sa.reforms.tasks.entities.data.QuantityData;
 import sa.reforms.exceptions.InvalidParamsException;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,14 +12,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.when;
+import static sa.reforms.tasks.entities.data.DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC;
+import static sa.reforms.tasks.entities.data.ProportionalPriceJobData.PP_JOB_PAINTWORK_PLASTIC;
+import static sa.reforms.tasks.entities.data.QuantityData.*;
 
 @ExtendWith(MockitoExtension.class)
 class TaskTest {
@@ -31,9 +31,9 @@ class TaskTest {
 
     @Test
     void testGetPrize() {
-        Quantity caseA = QuantityData.CASE_A(Quantity.Unit.M);
-        Quantity caseB = QuantityData.CASE_B(Quantity.Unit.M2);
-        Quantity caseC = QuantityData.CASE_C(Quantity.Unit.H);
+        Quantity caseA = CASE_A(Quantity.Unit.M);
+        Quantity caseB = CASE_B(Quantity.Unit.M2);
+        Quantity caseC = CASE_C(Quantity.Unit.H);
 
         when(this.contractedJob.valid(any())).thenReturn(true);
         when(this.contractedJob.getPrize(Optional.of(caseA.getMeasure()))).thenReturn(getExpected(caseA.getMeasure()));
@@ -42,15 +42,15 @@ class TaskTest {
 
         assertAll(
                 () -> {
-                    this.task.setQuantity(QuantityData.CASE_A(Quantity.Unit.M));
+                    this.task.setQuantity(CASE_A(Quantity.Unit.M));
                     assertEquals(getExpected(caseA.getMeasure()), this.task.getPrice());
                 },
                 () -> {
-                    this.task.setQuantity(QuantityData.CASE_B(Quantity.Unit.M2));
+                    this.task.setQuantity(CASE_B(Quantity.Unit.M2));
                     assertEquals(getExpected(caseB.getMeasure()), this.task.getPrice());
                 },
                 () -> {
-                    this.task.setQuantity(QuantityData.CASE_C(Quantity.Unit.M));
+                    this.task.setQuantity(CASE_C(Quantity.Unit.M));
                     assertEquals(getExpected(caseC.getMeasure()), this.task.getPrice());
                 }
         );
@@ -59,9 +59,9 @@ class TaskTest {
     @Test
     void testGetPrizeWithRealImpl() {
         this.task.setStatus(Task.TaskStatus.DONE);
-        Quantity caseA = QuantityData.CASE_A(Quantity.Unit.M);
-        Quantity caseB = QuantityData.CASE_B(Quantity.Unit.M2);
-        Quantity caseC = QuantityData.CASE_C(Quantity.Unit.H);
+        Quantity caseA = CASE_A(Quantity.Unit.M);
+        Quantity caseB = CASE_B(Quantity.Unit.M2);
+        Quantity caseC = CASE_C(Quantity.Unit.H);
 
         when(this.contractedJob.valid(any())).thenReturn(true);
         when(this.contractedJob.getPrize(Optional.of(caseA.getMeasure()))).thenReturn(getExpected(caseA.getMeasure()));
@@ -70,24 +70,24 @@ class TaskTest {
 
         assertAll(
                 () -> {
-                    this.task.setQuantity(QuantityData.CASE_A(Quantity.Unit.M));
+                    this.task.setQuantity(CASE_A(Quantity.Unit.M));
                     assertEquals(getExpected(caseA.getMeasure()), this.task.getPrice());
                 },
                 () -> {
-                    this.task.setQuantity(QuantityData.CASE_B(Quantity.Unit.M2));
+                    this.task.setQuantity(CASE_B(Quantity.Unit.M2));
                     assertEquals(getExpected(caseB.getMeasure()), this.task.getPrice());
                 },
                 () -> {
-                    this.task.setQuantity(QuantityData.CASE_C(Quantity.Unit.M));
+                    this.task.setQuantity(CASE_C(Quantity.Unit.M));
                     assertEquals(getExpected(caseC.getMeasure()), this.task.getPrice());
                 }
         );
     }
     @Test
     void testDirectPriceJobWithNoEuQuantity() {
-        Task taskA = new Task(DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC());
+        Task taskA = new Task(DP_JOB_PAINTWORK_PLASTIC());
         Exception exception2 = assertThrows(InvalidParamsException.class,
-                () -> taskA.setQuantity(QuantityData.CASE_A(Quantity.Unit.M)));
+                () -> taskA.setQuantity(CASE_A(Quantity.Unit.M)));
 
         assertEquals(InvalidParamsException.class, exception2.getClass());
     }
@@ -108,8 +108,8 @@ class TaskTest {
 
         when(this.contractedJob.valid(any())).thenReturn(true);
 
-        task1.setQuantity(QuantityData.CASE_A(Quantity.Unit.EU));
-        task2.setQuantity(QuantityData.CASE_A(Quantity.Unit.EU));
+        task1.setQuantity(CASE_A(Quantity.Unit.EU));
+        task2.setQuantity(CASE_A(Quantity.Unit.EU));
 
         assertEquals(task1, task2);
         assertEquals(task1.toString(), task2.toString());
@@ -140,11 +140,11 @@ class TaskTest {
 
         when(this.contractedJob.valid(any())).thenReturn(true);
 
-        task1.setQuantity(QuantityData.CASE_A(Quantity.Unit.EU));
-        task2.setQuantity(QuantityData.CASE_A(Quantity.Unit.EU));
+        task1.setQuantity(CASE_A(Quantity.Unit.EU));
+        task2.setQuantity(CASE_A(Quantity.Unit.EU));
 
-        task1.setJob(DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC());
-        task2.setJob(DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC());
+        task1.setJob(DP_JOB_PAINTWORK_PLASTIC());
+        task2.setJob(DP_JOB_PAINTWORK_PLASTIC());
 
         assertEquals(task1, task2);
         assertEquals(task1.toString(), task2.toString());
@@ -170,10 +170,10 @@ class TaskTest {
 
     @Test
     void test_setJob_unit() {
-        Task task1 = new Task(ProportionalPriceJobData.PP_JOB_PAINTWORK_PLASTIC());
-        task1.setQuantity(QuantityData.CASE_A(Quantity.Unit.M2));
+        Task task1 = new Task(PP_JOB_PAINTWORK_PLASTIC());
+        task1.setQuantity(CASE_A(Quantity.Unit.M2));
 
-        Exception exception = assertThrows(InvalidParamsException.class, () -> task1.setJob(DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC()));
+        Exception exception = assertThrows(InvalidParamsException.class, () -> task1.setJob(DP_JOB_PAINTWORK_PLASTIC()));
 
         assertEquals(InvalidParamsException.class, exception.getClass());
     }
