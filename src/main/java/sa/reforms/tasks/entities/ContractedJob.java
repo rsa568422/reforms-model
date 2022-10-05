@@ -3,11 +3,11 @@ package sa.reforms.tasks.entities;
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
 
-import lombok.Getter;
-import lombok.NonNull;
-
 import java.math.BigDecimal;
 import java.util.Optional;
+
+import lombok.Getter;
+import lombok.NonNull;
 
 @Getter
 public abstract class ContractedJob extends Job {

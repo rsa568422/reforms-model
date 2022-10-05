@@ -3,13 +3,13 @@ package sa.reforms.entities;
 import sa.reforms.exceptions.InvalidParamsException;
 import sa.reforms.tasks.entities.Task;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
-
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.StringJoiner;
+
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 
 @Getter
 public class Incidence {

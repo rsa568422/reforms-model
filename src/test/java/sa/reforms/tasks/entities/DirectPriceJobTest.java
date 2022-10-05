@@ -1,21 +1,19 @@
 package sa.reforms.tasks.entities;
 
 import sa.reforms.entities.Job;
-import sa.reforms.tasks.entities.data.DirectPriceJobData;
-import sa.reforms.tasks.entities.data.InsurerData;
-import sa.reforms.tasks.entities.data.JobData;
-import sa.reforms.tasks.entities.data.QuantityData;
 import sa.reforms.exceptions.InvalidParamsException;
+
+import java.math.BigDecimal;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.math.BigDecimal;
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
+import static sa.reforms.tasks.entities.data.DirectPriceJobData.*;
+import static sa.reforms.tasks.entities.data.QuantityData.*;
 
 class DirectPriceJobTest {
 
@@ -23,7 +21,7 @@ class DirectPriceJobTest {
 
     @BeforeEach
     void setUp() {
-        this.directPriceJob = DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC();
+        this.directPriceJob = DP_JOB_PAINTWORK_PLASTIC();
     }
 
     @ParameterizedTest
@@ -49,20 +47,26 @@ class DirectPriceJobTest {
     @Test
     void test_valid() {
         assertAll(
-                () -> assertFalse(this.directPriceJob.valid(QuantityData.EMPTY())),
-                () -> assertTrue(this.directPriceJob.valid(Optional.of(QuantityData.CASE_A(Quantity.Unit.EU)))),
-                () -> assertTrue(this.directPriceJob.valid(Optional.of(QuantityData.CASE_B(Quantity.Unit.EU)))),
-                () -> assertTrue(this.directPriceJob.valid(Optional.of(QuantityData.CASE_C(Quantity.Unit.EU))))
+                () -> assertFalse(this.directPriceJob.valid(EMPTY())),
+                () -> assertTrue(this.directPriceJob.valid(Optional.of(CASE_A(Quantity.Unit.EU)))),
+                () -> assertTrue(this.directPriceJob.valid(Optional.of(CASE_B(Quantity.Unit.EU)))),
+                () -> assertTrue(this.directPriceJob.valid(Optional.of(CASE_C(Quantity.Unit.EU))))
         );
     }
 
     @Test
     void test_constructors() {
-        Job job = JobData.JOB_PAINTWORK_PLASTIC();
-        DirectPriceJob jobA = new DirectPriceJob(InsurerData.INSURER_A(), job.getGuild(), job.getName());
-        DirectPriceJob jobB = new DirectPriceJob(InsurerData.INSURER_A(), JobData.JOB_PAINTWORK_PLASTIC());
+        Job job = JOB_PAINTWORK_PLASTIC();
+        DirectPriceJob jobA = new DirectPriceJob(INSURER_A(), job.getGuild(), job.getName());
+        DirectPriceJob jobB = new DirectPriceJob(INSURER_A(), JOB_PAINTWORK_PLASTIC());
 
         assertEquals(jobA.toString(), jobB.toString());
+    }
+
+    @Test
+    void test_get_insurer() {
+        DirectPriceJob job = DP_JOB_PAINTWORK_PLASTIC();
+        assertEquals(INSURER_A(), job.getInsurer());
     }
 
     @Test

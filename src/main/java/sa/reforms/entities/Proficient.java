@@ -1,10 +1,10 @@
 package sa.reforms.entities;
 
+import java.util.Optional;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-
-import java.util.Optional;
 
 @Getter
 public class Proficient extends Person {

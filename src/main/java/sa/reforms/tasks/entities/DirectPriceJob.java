@@ -4,11 +4,11 @@ import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
 import sa.reforms.exceptions.InvalidParamsException;
 
-import lombok.NonNull;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Optional;
+
+import lombok.NonNull;
 
 public class DirectPriceJob extends ContractedJob {
 

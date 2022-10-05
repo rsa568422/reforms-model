@@ -1,18 +1,18 @@
 package sa.reforms.tasks.entities;
 
-import sa.reforms.tasks.entities.data.ProportionalPriceJobData;
 import sa.reforms.exceptions.InvalidParamsException;
+
+import java.math.BigDecimal;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import sa.reforms.tasks.entities.data.QuantityData;
-
-import java.math.BigDecimal;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static sa.reforms.tasks.entities.data.ProportionalPriceJobData.PP_JOB_PAINTWORK_PLASTIC;
+import static sa.reforms.tasks.entities.data.QuantityData.*;
 
 class ProportionalPriceJobTest {
 
@@ -20,7 +20,7 @@ class ProportionalPriceJobTest {
 
     @BeforeEach
     void setUp() {
-        this.proportionalPriceJob = ProportionalPriceJobData.PP_JOB_PAINTWORK_PLASTIC();
+        this.proportionalPriceJob = PP_JOB_PAINTWORK_PLASTIC();
     }
 
     @ParameterizedTest
@@ -62,10 +62,10 @@ class ProportionalPriceJobTest {
     @Test
     void test_valid() {
         assertAll(
-                () -> assertFalse(this.proportionalPriceJob.valid(QuantityData.EMPTY())),
-                () -> assertTrue(this.proportionalPriceJob.valid(Optional.of(QuantityData.CASE_A(Quantity.Unit.EU)))),
-                () -> assertTrue(this.proportionalPriceJob.valid(Optional.of(QuantityData.CASE_B(Quantity.Unit.EU)))),
-                () -> assertTrue(this.proportionalPriceJob.valid(Optional.of(QuantityData.CASE_C(Quantity.Unit.EU))))
+                () -> assertFalse(this.proportionalPriceJob.valid(EMPTY())),
+                () -> assertTrue(this.proportionalPriceJob.valid(Optional.of(CASE_A(Quantity.Unit.EU)))),
+                () -> assertTrue(this.proportionalPriceJob.valid(Optional.of(CASE_B(Quantity.Unit.EU)))),
+                () -> assertTrue(this.proportionalPriceJob.valid(Optional.of(CASE_C(Quantity.Unit.EU))))
         );
     }
 
