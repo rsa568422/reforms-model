@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 public class Task {
 
-    public enum TaskStatus { PENDING, DONE, CANCELED, REOPENED }
+    public enum TaskStatus { PENDING, IN_PROGRESS, DONE, CANCELED }
 
     @NonNull
     private ContractedJob job;
