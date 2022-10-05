@@ -1,4 +1,4 @@
-package sa.reforms.tasks.data;
+package sa.reforms.tasks.quantities.data;
 
 import sa.reforms.tasks.quatities.Quantity;
 

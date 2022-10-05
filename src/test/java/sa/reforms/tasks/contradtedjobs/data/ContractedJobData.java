@@ -1,6 +1,8 @@
-package sa.reforms.tasks.data;
+package sa.reforms.tasks.contradtedjobs.data;
 
 import sa.reforms.entities.Job;
+import sa.reforms.tasks.data.InsurerData;
+import sa.reforms.tasks.data.JobData;
 
 public class ContractedJobData extends InsurerData {
 

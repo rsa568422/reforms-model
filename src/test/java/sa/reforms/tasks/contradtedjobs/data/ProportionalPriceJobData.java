@@ -1,4 +1,4 @@
-package sa.reforms.tasks.data;
+package sa.reforms.tasks.contradtedjobs.data;
 
 import sa.reforms.tasks.contradtedjobs.ProportionalPriceJob;
 

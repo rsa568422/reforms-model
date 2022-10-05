@@ -18,9 +18,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.when;
-import static sa.reforms.tasks.data.DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC;
-import static sa.reforms.tasks.data.ProportionalPriceJobData.PP_JOB_PAINTWORK_PLASTIC;
-import static sa.reforms.tasks.data.QuantityData.*;
+import static sa.reforms.tasks.contradtedjobs.data.DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC;
+import static sa.reforms.tasks.contradtedjobs.data.ProportionalPriceJobData.PP_JOB_PAINTWORK_PLASTIC;
+import static sa.reforms.tasks.quantities.data.QuantityData.*;
 
 @ExtendWith(MockitoExtension.class)
 class TaskTest {

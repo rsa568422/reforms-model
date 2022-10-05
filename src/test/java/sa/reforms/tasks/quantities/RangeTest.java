@@ -1,4 +1,4 @@
-package sa.reforms.tasks;
+package sa.reforms.tasks.quantities;
 
 import sa.reforms.tasks.quatities.Range;
 import sa.reforms.tasks.exceptions.ComparisonException;
@@ -7,7 +7,7 @@ import sa.reforms.exceptions.InvalidParamsException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static sa.reforms.tasks.data.RangeData.*;
+import static sa.reforms.tasks.quantities.data.RangeData.*;
 
 class RangeTest {
 
