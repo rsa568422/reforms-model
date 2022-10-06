@@ -27,7 +27,7 @@ public class Proficient extends Person {
     @Override
     public String toString() {
         String target = super.toString().substring(0, super.toString().indexOf("{") + 1);
-        String replacement = String.format("Proficient{ insurer: %s, ", this.insurer);
+        String replacement = String.format("Proficient{ insurer:%s, ", this.insurer);
         return super.toString().replace(target, replacement);
     }
 

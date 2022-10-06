@@ -1,5 +1,6 @@
 package sa.reforms.tasks;
 
+import sa.reforms.entities.Task;
 import sa.reforms.tasks.quatities.Quantity;
 import sa.reforms.tasks.contradtedjobs.ContractedJob;
 import sa.reforms.exceptions.InvalidParamsException;
@@ -10,23 +11,16 @@ import java.util.StringJoiner;
 
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.Setter;
 
 @Getter
-public class Task {
-
-    public enum TaskStatus { PENDING, IN_PROGRESS, DONE, CANCELED }
+public class ContractedTask extends Task {
 
     @NonNull
     private ContractedJob job;
 
-    @NonNull
-    @Setter
-    private TaskStatus status = TaskStatus.PENDING;
-
     private Optional<Quantity> quantity = Optional.empty();
 
-    public Task(@NonNull ContractedJob job) {
+    public ContractedTask(@NonNull ContractedJob job) {
         this.job = job;
     }
 
@@ -42,6 +36,7 @@ public class Task {
         this.quantity = Optional.ofNullable(quantity);
     }
 
+    @Override
     public BigDecimal getPrice() {
         return this.job.getPrize(this.quantity.map(Quantity::getMeasure));
     }
@@ -49,9 +44,9 @@ public class Task {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Task)) return false;
+        if (!(o instanceof ContractedTask)) return false;
 
-        Task task = (Task) o;
+        ContractedTask task = (ContractedTask) o;
 
         if (!getJob().equals(task.getJob())) return false;
         if (getStatus() != task.getStatus()) return false;
@@ -68,11 +63,11 @@ public class Task {
 
     @Override
     public String toString() {
-        StringJoiner joiner = new StringJoiner(", ", "Task{ ", " }");
+        String target = super.toString().substring(0, super.toString().indexOf("{") + 1);
+        StringJoiner joiner = new StringJoiner(", ", "ContractedTask{ ", ", ");
         joiner.add(String.format("job:%s", this.job));
-        joiner.add(String.format("status:%s", this.status));
-        this.quantity.ifPresent(quantity -> joiner.add(String.format("quantity:%s", this.quantity)));
-        return joiner.toString();
+        this.quantity.ifPresent(quantity -> joiner.add(String.format("quantity:%s", quantity)));
+        return super.toString().replace(target, joiner.toString());
     }
 
 }

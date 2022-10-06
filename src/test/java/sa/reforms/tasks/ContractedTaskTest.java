@@ -23,10 +23,10 @@ import static sa.reforms.tasks.contradtedjobs.data.ProportionalPriceJobData.PP_J
 import static sa.reforms.tasks.quantities.data.QuantityData.*;
 
 @ExtendWith(MockitoExtension.class)
-class TaskTest {
+class ContractedTaskTest {
 
     @InjectMocks
-    private Task task;
+    private ContractedTask task;
 
     @Mock
     private ContractedJob contractedJob;
@@ -60,7 +60,7 @@ class TaskTest {
 
     @Test
     void testGetPrizeWithRealImpl() {
-        this.task.setStatus(Task.TaskStatus.DONE);
+        this.task.setStatus(ContractedTask.Status.DONE);
         Quantity caseA = CASE_A(Quantity.Unit.M);
         Quantity caseB = CASE_B(Quantity.Unit.M2);
         Quantity caseC = CASE_C(Quantity.Unit.H);
@@ -87,7 +87,7 @@ class TaskTest {
     }
     @Test
     void testDirectPriceJobWithNoEuQuantity() {
-        Task taskA = new Task(DP_JOB_PAINTWORK_PLASTIC());
+        ContractedTask taskA = new ContractedTask(DP_JOB_PAINTWORK_PLASTIC());
         Exception exception2 = assertThrows(InvalidParamsException.class,
                 () -> taskA.setQuantity(CASE_A(Quantity.Unit.M)));
 
@@ -105,8 +105,8 @@ class TaskTest {
 
     @Test
     void testOverrideDefaultMethods() {
-        Task task1 = new Task(this.contractedJob);
-        Task task2 = new Task(this.contractedJob);
+        ContractedTask task1 = new ContractedTask(this.contractedJob);
+        ContractedTask task2 = new ContractedTask(this.contractedJob);
 
         when(this.contractedJob.valid(any())).thenReturn(true);
 
@@ -137,8 +137,8 @@ class TaskTest {
 
     @Test
     void testOverrideDefaultMethodsWithRealImpl() {
-        Task task1 = new Task(this.contractedJob);
-        Task task2 = new Task(this.contractedJob);
+        ContractedTask task1 = new ContractedTask(this.contractedJob);
+        ContractedTask task2 = new ContractedTask(this.contractedJob);
 
         when(this.contractedJob.valid(any())).thenReturn(true);
 
@@ -172,7 +172,7 @@ class TaskTest {
 
     @Test
     void test_setJob_unit() {
-        Task task1 = new Task(PP_JOB_PAINTWORK_PLASTIC());
+        ContractedTask task1 = new ContractedTask(PP_JOB_PAINTWORK_PLASTIC());
         task1.setQuantity(CASE_A(Quantity.Unit.M2));
 
         Exception exception = assertThrows(InvalidParamsException.class, () -> task1.setJob(DP_JOB_PAINTWORK_PLASTIC()));

@@ -1,6 +1,5 @@
 package sa.reforms.entities;
 
-import sa.reforms.tasks.Task;
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.util.LinkedHashSet;
