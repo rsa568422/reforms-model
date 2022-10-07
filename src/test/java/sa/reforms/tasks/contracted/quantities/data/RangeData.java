@@ -1,4 +1,4 @@
-package sa.reforms.tasks.quantities.data;
+package sa.reforms.tasks.contracted.quantities.data;
 
 import sa.reforms.tasks.contracted.quatities.Range;
 

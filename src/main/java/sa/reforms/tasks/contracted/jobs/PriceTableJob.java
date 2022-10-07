@@ -4,6 +4,7 @@ import sa.reforms.tasks.contracted.quatities.Quantity;
 import sa.reforms.tasks.contracted.quatities.Range;
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
+
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;
