@@ -1,4 +1,4 @@
-package sa.reforms.tasks.contracted.jobs;
+package sa.reforms.tasks.quantified.jobs;
 
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;

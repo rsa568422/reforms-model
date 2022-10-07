@@ -1,6 +1,6 @@
-package sa.reforms.tasks.contracted.quantities.data;
+package sa.reforms.tasks.quantified.quantities.data;
 
-import sa.reforms.tasks.contracted.quatities.Range;
+import sa.reforms.tasks.quantified.quatities.Range;
 
 public class RangeData {
 
