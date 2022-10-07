@@ -1,4 +1,4 @@
-package sa.reforms.tasks.quatities;
+package sa.reforms.tasks.contracted.quatities;
 
 import sa.reforms.exceptions.InvalidParamsException;
 import sa.reforms.tasks.exceptions.ComparisonException;

@@ -1,6 +1,6 @@
-package sa.reforms.tasks.contradtedjobs.data;
+package sa.reforms.tasks.contracted.data;
 
-import sa.reforms.tasks.contradtedjobs.DirectPriceJob;
+import sa.reforms.tasks.contracted.jobs.DirectPriceJob;
 
 public class DirectPriceJobData extends ContractedJobData {
 

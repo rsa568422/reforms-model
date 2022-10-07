@@ -1,6 +1,7 @@
-package sa.reforms.tasks.contradtedjobs;
+package sa.reforms.tasks.contracted;
 
-import sa.reforms.tasks.quatities.Quantity;
+import sa.reforms.tasks.contracted.jobs.ProportionalPriceJob;
+import sa.reforms.tasks.contracted.quatities.Quantity;
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static sa.reforms.tasks.contradtedjobs.data.ProportionalPriceJobData.PP_JOB_PAINTWORK_PLASTIC;
+import static sa.reforms.tasks.contracted.data.ProportionalPriceJobData.PP_JOB_PAINTWORK_PLASTIC;
 import static sa.reforms.tasks.quantities.data.QuantityData.*;
 
 class ProportionalPriceJobTest {

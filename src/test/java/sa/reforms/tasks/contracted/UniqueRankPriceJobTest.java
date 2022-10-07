@@ -1,7 +1,8 @@
-package sa.reforms.tasks.contradtedjobs;
+package sa.reforms.tasks.contracted;
 
 import sa.reforms.entities.Job;
-import sa.reforms.tasks.quatities.Quantity;
+import sa.reforms.tasks.contracted.jobs.UniqueRankPriceJob;
+import sa.reforms.tasks.contracted.quatities.Quantity;
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;
@@ -14,7 +15,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static sa.reforms.tasks.quantities.data.QuantityData.*;
-import static sa.reforms.tasks.contradtedjobs.data.UniqueRankPriceTableJobData.*;
+import static sa.reforms.tasks.contracted.data.UniqueRankPriceTableJobData.*;
 
 class UniqueRankPriceJobTest {
 

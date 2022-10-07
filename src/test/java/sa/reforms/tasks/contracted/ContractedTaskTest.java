@@ -1,7 +1,7 @@
-package sa.reforms.tasks;
+package sa.reforms.tasks.contracted;
 
-import sa.reforms.tasks.contradtedjobs.ContractedJob;
-import sa.reforms.tasks.quatities.Quantity;
+import sa.reforms.tasks.contracted.jobs.ContractedJob;
+import sa.reforms.tasks.contracted.quatities.Quantity;
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;
@@ -18,8 +18,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.when;
-import static sa.reforms.tasks.contradtedjobs.data.DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC;
-import static sa.reforms.tasks.contradtedjobs.data.ProportionalPriceJobData.PP_JOB_PAINTWORK_PLASTIC;
+import static sa.reforms.tasks.contracted.data.DirectPriceJobData.DP_JOB_PAINTWORK_PLASTIC;
+import static sa.reforms.tasks.contracted.data.ProportionalPriceJobData.PP_JOB_PAINTWORK_PLASTIC;
 import static sa.reforms.tasks.quantities.data.QuantityData.*;
 
 @ExtendWith(MockitoExtension.class)

@@ -1,6 +1,6 @@
-package sa.reforms.tasks.contradtedjobs.data;
+package sa.reforms.tasks.contracted.data;
 
-import sa.reforms.tasks.quatities.Range;
+import sa.reforms.tasks.contracted.quatities.Range;
 
 import java.math.BigDecimal;
 import java.util.HashMap;

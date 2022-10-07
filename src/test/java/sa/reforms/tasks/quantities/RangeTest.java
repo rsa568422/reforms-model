@@ -1,6 +1,6 @@
 package sa.reforms.tasks.quantities;
 
-import sa.reforms.tasks.quatities.Range;
+import sa.reforms.tasks.contracted.quatities.Range;
 import sa.reforms.tasks.exceptions.ComparisonException;
 import sa.reforms.exceptions.InvalidParamsException;
 

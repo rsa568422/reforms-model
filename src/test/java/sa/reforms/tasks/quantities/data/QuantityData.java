@@ -1,6 +1,6 @@
 package sa.reforms.tasks.quantities.data;
 
-import sa.reforms.tasks.quatities.Quantity;
+import sa.reforms.tasks.contracted.quatities.Quantity;
 
 import java.util.Optional;
 

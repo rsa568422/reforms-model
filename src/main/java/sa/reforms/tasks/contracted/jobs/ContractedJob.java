@@ -1,11 +1,9 @@
-package sa.reforms.tasks.contradtedjobs;
+package sa.reforms.tasks.contracted.jobs;
 
-import sa.reforms.tasks.quatities.Quantity;
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
 import lombok.Getter;
 import lombok.NonNull;
@@ -25,9 +23,7 @@ public abstract class ContractedJob extends Job {
         this(insurer, job.getGuild(), job.getName());
     }
 
-    public abstract BigDecimal getPrize(Optional<Double> quantity);
-
-    public abstract boolean valid(Optional<Quantity> quantity);
+    public abstract BigDecimal getPrize();
 
     @Override
     public String toString() {

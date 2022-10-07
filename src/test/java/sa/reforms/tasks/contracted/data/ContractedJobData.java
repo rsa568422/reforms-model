@@ -1,4 +1,4 @@
-package sa.reforms.tasks.contradtedjobs.data;
+package sa.reforms.tasks.contracted.data;
 
 import sa.reforms.entities.Job;
 import sa.reforms.tasks.data.InsurerData;
