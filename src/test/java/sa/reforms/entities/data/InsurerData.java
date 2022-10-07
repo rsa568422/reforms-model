@@ -1,4 +1,4 @@
-package sa.reforms.tasks.data;
+package sa.reforms.entities.data;
 
 import sa.reforms.entities.Insurer;
 
