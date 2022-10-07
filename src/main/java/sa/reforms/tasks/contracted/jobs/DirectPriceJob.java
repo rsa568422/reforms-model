@@ -1,10 +1,11 @@
 package sa.reforms.tasks.contracted.jobs;
 
-import java.math.BigDecimal;
-
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
 import sa.reforms.tasks.contracted.quatities.Quantity;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import lombok.NonNull;
 
@@ -21,13 +22,7 @@ public class DirectPriceJob extends VariablePrizeJob {
 
     @Override
     public BigDecimal getPrize(@NonNull Quantity quantity) {
-        return null;
-    }
-
-    @Override
-    public String toString() {
-        String target = super.toString().substring(0, super.toString().indexOf("{"));
-        return super.toString().replace(target, "DirectPriceJob");
+        return BigDecimal.valueOf(quantity.getMeasure()).setScale(2, RoundingMode.CEILING);
     }
 
 }
