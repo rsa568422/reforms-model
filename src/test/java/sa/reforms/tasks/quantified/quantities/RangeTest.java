@@ -1,10 +1,8 @@
 package sa.reforms.tasks.quantified.quantities;
 
-import sa.reforms.tasks.quantified.quatities.Range;
-import sa.reforms.tasks.exceptions.ComparisonException;
-import sa.reforms.exceptions.InvalidParamsException;
-
 import org.junit.jupiter.api.Test;
+import sa.reforms.exceptions.InvalidParamsException;
+import sa.reforms.tasks.exceptions.ComparisonException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static sa.reforms.tasks.quantified.quantities.data.RangeData.*;
@@ -44,6 +42,22 @@ class RangeTest {
     }
 
     @Test
+    void test_toString() {
+        assertAll(
+                () -> assertEquals("(-inf, 0.0]", RANK_N().toString()),
+                () -> assertEquals("(0.0, +inf]", RANK_P().toString()),
+                () -> assertEquals("(-3.0, 0.0]", RANK_1().toString()),
+                () -> assertEquals("(0.0, 3.0]", RANK_2().toString()),
+                () -> assertEquals("(-2.0, 2.0]", RANK_3().toString()),
+                () -> assertEquals("(-inf, +inf]", RANK_A().toString())
+        );
+    }
+
+    @Test
+    void test_compareTo() {
+    }
+
+    @Test
     void test_equals() {
         assertAll(
                 () -> assertEquals(RANK_N(), RANK_N()),
@@ -53,6 +67,10 @@ class RangeTest {
                 () -> assertEquals(RANK_3(), RANK_3()),
                 () -> assertEquals(RANK_A(), RANK_A())
         );
+    }
+
+    @Test
+    void test_canEqual() {
     }
 
     @Test
@@ -68,15 +86,11 @@ class RangeTest {
     }
 
     @Test
-    void test_toString() {
-        assertAll(
-                () -> assertEquals("(-inf, 0.0]", RANK_N().toString()),
-                () -> assertEquals("(0.0, +inf]", RANK_P().toString()),
-                () -> assertEquals("(-3.0, 0.0]", RANK_1().toString()),
-                () -> assertEquals("(0.0, 3.0]", RANK_2().toString()),
-                () -> assertEquals("(-2.0, 2.0]", RANK_3().toString()),
-                () -> assertEquals("(-inf, +inf]", RANK_A().toString())
-        );
+    void test_getMin() {
+    }
+
+    @Test
+    void test_getMax() {
     }
 
     @Test

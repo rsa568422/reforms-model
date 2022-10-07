@@ -1,6 +1,6 @@
 package sa.reforms.tasks.quantified.quantities.data;
 
-import sa.reforms.tasks.quantified.quatities.Range;
+import sa.reforms.tasks.quantified.quantities.Range;
 
 public class RangeData {
 

@@ -1,6 +1,6 @@
 package sa.reforms.tasks.quantified.quantities.data;
 
-import sa.reforms.tasks.quantified.quatities.Quantity;
+import sa.reforms.tasks.quantified.quantities.Quantity;
 
 import java.util.Optional;
 

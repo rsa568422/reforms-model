@@ -1,7 +1,7 @@
 package sa.reforms.tasks.quantified.jobs;
 
-import sa.reforms.tasks.quantified.quatities.Quantity;
-import sa.reforms.tasks.quantified.quatities.Range;
+import sa.reforms.tasks.quantified.quantities.Quantity;
+import sa.reforms.tasks.quantified.quantities.Range;
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
 
