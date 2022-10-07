@@ -12,8 +12,10 @@ import java.math.RoundingMode;
 import java.util.Map;
 import java.util.function.Function;
 
-import lombok.NonNull;
+import lombok.*;
 
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class IncrementalRankPriceTableJob extends PriceTableJob {
 
     public IncrementalRankPriceTableJob(@NonNull Insurer insurer, @NonNull Guild guild, @NonNull String name, @NonNull Quantity quantity, @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {

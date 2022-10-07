@@ -6,10 +6,11 @@ import sa.reforms.tasks.contracted.jobs.ContractedJob;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 @Getter
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class ContractedTask extends Task {
 
     @NonNull

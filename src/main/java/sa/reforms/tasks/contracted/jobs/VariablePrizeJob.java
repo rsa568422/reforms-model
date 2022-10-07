@@ -6,10 +6,14 @@ import sa.reforms.tasks.contracted.quatities.Quantity;
 
 import java.math.BigDecimal;
 
-import lombok.NonNull;
+import lombok.*;
 
+@Getter
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public abstract class VariablePrizeJob extends ContractedJob {
 
+    @NonNull
     private final Quantity quantity;
 
     public VariablePrizeJob(@NonNull Insurer insurer, @NonNull Guild guild,

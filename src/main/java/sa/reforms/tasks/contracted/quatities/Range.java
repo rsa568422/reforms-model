@@ -3,10 +3,10 @@ package sa.reforms.tasks.contracted.quatities;
 import sa.reforms.exceptions.InvalidParamsException;
 import sa.reforms.tasks.exceptions.ComparisonException;
 
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 @Getter
+@EqualsAndHashCode
 public class Range implements Comparable<Range> {
 
     @NonNull
@@ -26,24 +26,6 @@ public class Range implements Comparable<Range> {
 
     public boolean contains(Double value) {
         return value > this.min && value <= this.max;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Range)) return false;
-
-        Range range = (Range) o;
-
-        if (!getMin().equals(range.getMin())) return false;
-        return getMax().equals(range.getMax());
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getMin().hashCode();
-        result = 31 * result + getMax().hashCode();
-        return result;
     }
 
     @Override

@@ -10,8 +10,10 @@ import java.math.BigDecimal;
 import java.util.Map;
 import java.util.function.Function;
 
-import lombok.NonNull;
+import lombok.*;
 
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public abstract class PriceTableJob extends VariablePrizeJob {
 
     protected final Map<Range, Function<Double, BigDecimal>> priceTable;

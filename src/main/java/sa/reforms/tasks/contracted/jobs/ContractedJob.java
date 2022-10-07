@@ -5,10 +5,11 @@ import sa.reforms.entities.Job;
 
 import java.math.BigDecimal;
 
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 @Getter
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public abstract class ContractedJob extends Job {
 
     @NonNull
@@ -24,12 +25,5 @@ public abstract class ContractedJob extends Job {
     }
 
     public abstract BigDecimal getPrize();
-
-    @Override
-    public String toString() {
-        String target = super.toString().substring(0, super.toString().indexOf("{") + 1);
-        String replacement = String.format("ContractedJob{ insurer:%s, ", this.insurer);
-        return super.toString().replace(target, replacement);
-    }
 
 }

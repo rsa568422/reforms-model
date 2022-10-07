@@ -1,22 +1,20 @@
 package sa.reforms.tasks.contracted.jobs;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
 import sa.reforms.tasks.contracted.quatities.Quantity;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
+import lombok.*;
+
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class ProportionalPriceJob extends VariablePrizeJob {
 
     @NonNull
-    @Getter
-    @Setter
-    private BigDecimal unitPrice;
+    private final BigDecimal unitPrice;
 
     public ProportionalPriceJob(@NonNull Insurer insurer, @NonNull Guild guild,
                                 @NonNull String name, @NonNull Quantity quantity,
@@ -36,12 +34,6 @@ public class ProportionalPriceJob extends VariablePrizeJob {
         return this.unitPrice
                 .multiply(BigDecimal.valueOf(quantity.getMeasure()))
                 .setScale(2, RoundingMode.CEILING);
-    }
-
-    @Override
-    public String toString() {
-        String target = super.toString().substring(0, super.toString().indexOf("{"));
-        return super.toString().replace(target, "ProportionalPriceJob");
     }
 
 }

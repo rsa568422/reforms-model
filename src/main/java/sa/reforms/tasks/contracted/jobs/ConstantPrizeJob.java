@@ -5,8 +5,10 @@ import sa.reforms.entities.Job;
 
 import java.math.BigDecimal;
 
-import lombok.NonNull;
+import lombok.*;
 
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class ConstantPrizeJob extends ContractedJob {
 
     private final BigDecimal prize;
