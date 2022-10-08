@@ -1,4 +1,4 @@
-package sa.reforms.tasks.contracted.exceptions;
+package sa.reforms.tasks.contracted.jobs.variableprice.pricetable.exceptions;
 
 import sa.reforms.exceptions.InvalidParamsException;
 

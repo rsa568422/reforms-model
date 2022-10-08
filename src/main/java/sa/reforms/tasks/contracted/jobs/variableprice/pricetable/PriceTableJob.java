@@ -1,9 +1,9 @@
 package sa.reforms.tasks.contracted.jobs.variableprice.pricetable;
 
-import sa.reforms.tasks.contracted.Quantity;
-import sa.reforms.tasks.contracted.jobs.variableprice.VariablePriceJob;
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
+import sa.reforms.tasks.contracted.Quantity;
+import sa.reforms.tasks.contracted.jobs.variableprice.VariablePriceJob;
 
 import sa.reforms.exceptions.InvalidParamsException;
 

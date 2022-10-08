@@ -1,7 +1,7 @@
 package sa.reforms.tasks.contracted.jobs.variableprice.pricetable;
 
 import sa.reforms.exceptions.InvalidParamsException;
-import sa.reforms.tasks.contracted.exceptions.ComparisonException;
+import sa.reforms.tasks.contracted.jobs.variableprice.pricetable.exceptions.ComparisonException;
 
 import org.junit.jupiter.api.Test;
 
