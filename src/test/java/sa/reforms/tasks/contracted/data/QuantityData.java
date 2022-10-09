@@ -17,4 +17,12 @@ public class QuantityData {
         return new Quantity(50D, unit);
     }
 
+    public static Quantity CASE_EU_A() {
+        return new Quantity(20D, Quantity.Unit.EU);
+    }
+
+    public static Quantity CASE_EU_B() {
+        return new Quantity(50.50, Quantity.Unit.EU);
+    }
+
 }
