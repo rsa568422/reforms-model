@@ -1,12 +1,41 @@
 package sa.reforms.tasks.contracted.data;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import sa.reforms.entities.Insurer;
+import sa.reforms.entities.data.InsurerData;
+import sa.reforms.entities.data.TaskData;
 
-public class ContractedTaskData {
+public class ContractedTaskData extends TaskData {
 
-    public static BigDecimal GET_DEFAULT_PRIZE() {
-        return new BigDecimal("50.50").setScale(2, RoundingMode.CEILING);
+    public static String GET_DEFAULT_NAME_A() {
+        return InsurerData.GET_DEFAULT_NAME_A();
+    }
+
+    public static String GET_DEFAULT_NAME_B() {
+        return InsurerData.GET_DEFAULT_NAME_B();
+    }
+
+    public static String GET_DEFAULT_PHONE_A() {
+        return InsurerData.GET_DEFAULT_PHONE_A();
+    }
+
+    public static String GET_DEFAULT_PHONE_B() {
+        return InsurerData.GET_DEFAULT_PHONE_B();
+    }
+
+    public static Insurer GET_DEFAULT_INSURER_A() {
+        return InsurerData.GET_DEFAULT_INSURER_A();
+    }
+
+    public static Insurer GET_DEFAULT_INSURER_B() {
+        return InsurerData.GET_DEFAULT_INSURER_B();
+    }
+
+    public static Insurer GET_DEFAULT_INSURER_A_WITH_PRONE() {
+        return InsurerData.GET_DEFAULT_INSURER_A_WITH_PRONE();
+    }
+
+    public static Insurer GET_DEFAULT_INSURER_B_WITH_PRONE() {
+        return InsurerData.GET_DEFAULT_INSURER_B_WITH_PRONE();
     }
 
 }

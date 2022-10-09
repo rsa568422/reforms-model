@@ -8,9 +8,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
-import static sa.reforms.tasks.contracted.data.ContractedTaskData.GET_DEFAULT_PRIZE;
+import static sa.reforms.tasks.contracted.data.ContractedTaskData.*;
+
 
 @ExtendWith(MockitoExtension.class)
 class ContractedTaskTest {
@@ -23,13 +24,20 @@ class ContractedTaskTest {
 
     @Test
     void test_getPrice() {
-        BigDecimal expected = GET_DEFAULT_PRIZE();
-
-        when(this.contractedJob.getPrice()).thenReturn(GET_DEFAULT_PRIZE());
-
-        BigDecimal actual = this.contractedTask.getPrice();
-
-        assertEquals(expected, actual);
+        assertAll(
+                () -> {
+                    BigDecimal expected = GET_DEFAULT_PRICE_A();
+                    when(this.contractedJob.getPrice()).thenReturn(GET_DEFAULT_PRICE_A());
+                    BigDecimal actual = this.contractedTask.getPrice();
+                    assertEquals(expected, actual);
+                },
+                () -> {
+                    BigDecimal expected = GET_DEFAULT_PRICE_B();
+                    when(this.contractedJob.getPrice()).thenReturn(GET_DEFAULT_PRICE_B());
+                    BigDecimal actual = this.contractedTask.getPrice();
+                    assertEquals(expected, actual);
+                }
+        );
     }
 
     @Test
