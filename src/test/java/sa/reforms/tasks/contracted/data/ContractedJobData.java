@@ -41,12 +41,12 @@ public class ContractedJobData extends JobData {
         return InsurerData.GET_DEFAULT_INSURER_B();
     }
 
-    public static Insurer GET_DEFAULT_INSURER_A_WITH_PRONE() {
-        return InsurerData.GET_DEFAULT_INSURER_A_WITH_PRONE();
+    public static Insurer GET_DEFAULT_INSURER_A_WITH_PHONE() {
+        return InsurerData.GET_DEFAULT_INSURER_A_WITH_PHONE();
     }
 
-    public static Insurer GET_DEFAULT_INSURER_B_WITH_PRONE() {
-        return InsurerData.GET_DEFAULT_INSURER_B_WITH_PRONE();
+    public static Insurer GET_DEFAULT_INSURER_B_WITH_PHONE() {
+        return InsurerData.GET_DEFAULT_INSURER_B_WITH_PHONE();
     }
 
 }

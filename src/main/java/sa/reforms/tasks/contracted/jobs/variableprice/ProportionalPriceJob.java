@@ -2,6 +2,7 @@ package sa.reforms.tasks.contracted.jobs.variableprice;
 
 import sa.reforms.entities.Insurer;
 import sa.reforms.entities.Job;
+import sa.reforms.exceptions.InvalidParamsException;
 import sa.reforms.tasks.contracted.Quantity;
 
 import java.math.BigDecimal;

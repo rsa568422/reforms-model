@@ -28,13 +28,13 @@ public class InsurerData {
         return new Insurer(GET_DEFAULT_NAME_B());
     }
 
-    public static Insurer GET_DEFAULT_INSURER_A_WITH_PRONE() {
+    public static Insurer GET_DEFAULT_INSURER_A_WITH_PHONE() {
         Insurer insurer = GET_DEFAULT_INSURER_A();
         insurer.getPhones().add(GET_DEFAULT_PHONE_A());
         return insurer;
     }
 
-    public static Insurer GET_DEFAULT_INSURER_B_WITH_PRONE() {
+    public static Insurer GET_DEFAULT_INSURER_B_WITH_PHONE() {
         Insurer insurer = GET_DEFAULT_INSURER_B();
         insurer.getPhones().add(GET_DEFAULT_PHONE_B());
         return insurer;
