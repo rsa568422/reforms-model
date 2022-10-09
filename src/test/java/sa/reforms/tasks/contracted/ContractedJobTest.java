@@ -7,23 +7,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class ContractedJobTest {
 
     @Test
-    void getPrice() {
+    void test_getPrice() {
     }
 
     @Test
-    void testEquals() {
+    void test_equals() {
     }
 
     @Test
-    void testHashCode() {
+    void test_hashCode() {
     }
 
     @Test
-    void getInsurer() {
+    void test_getInsurer() {
     }
 
     @Test
-    void testToString() {
+    void test_toString() {
     }
 
 }
