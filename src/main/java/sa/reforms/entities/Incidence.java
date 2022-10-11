@@ -2,6 +2,8 @@ package sa.reforms.entities;
 
 import sa.reforms.exceptions.InvalidParamsException;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -32,6 +34,14 @@ public class Incidence {
         this.code = code;
         this.insurance = insurance;
         this.proficient = proficient;
+    }
+
+    public BigDecimal getAssessment() {
+        return this.tasks
+                .stream()
+                .map(Task::getPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .setScale(2, RoundingMode.CEILING);
     }
 
 }
