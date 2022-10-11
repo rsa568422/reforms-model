@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static sa.reforms.tasks.contracted.data.ContractedTaskData.*;
 
-
 @ExtendWith(MockitoExtension.class)
 class ContractedTaskTest {
 
@@ -41,17 +40,17 @@ class ContractedTaskTest {
     }
 
     @Test
+    void test_getJob() {
+
+    }
+
+    @Test
     void test_equals() {
 
     }
 
     @Test
     void test_hashCode() {
-
-    }
-
-    @Test
-    void test_getJob() {
 
     }
 

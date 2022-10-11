@@ -50,6 +50,38 @@ class IncrementalRankPriceTableJobTest {
                 () -> assertEquals(
                         GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_A(M)),
                         GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_A(M))
+                ),
+                () -> assertEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_B(M)),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_B(M))
+                ),
+                () -> assertEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_C(M)),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_C(M))
+                ),
+                () -> assertEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_A(M)),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_A(M))
+                ),
+                () -> assertEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_B(M)),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_B(M))
+                ),
+                () -> assertEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_C(M)),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_C(M))
+                ),
+                () -> assertNotEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_A(M)),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_B(M))
+                ),
+                () -> assertNotEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_A(M)),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_B(M))
+                ),
+                () -> assertNotEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_A(M)),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_A(M))
                 )
         );
     }
@@ -60,6 +92,46 @@ class IncrementalRankPriceTableJobTest {
                 () -> assertEquals(
                         GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_A(M)).hashCode(),
                         GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_A(M)).hashCode()
+                ),
+                () -> assertEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_B(M)).hashCode(),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_B(M)).hashCode()
+                ),
+                () -> assertEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_C(M)).hashCode(),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_C(M)).hashCode()
+                ),
+                () -> assertNotEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_A(M)).hashCode(),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_A(M2)).hashCode()
+                ),
+                () -> assertEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_A(M2)).hashCode(),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_A(M2)).hashCode()
+                ),
+                () -> assertEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_B(M2)).hashCode(),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_B(M2)).hashCode()
+                ),
+                () -> assertEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_C(M2)).hashCode(),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_C(M2)).hashCode()
+                ),
+                () -> assertNotEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_C(M)).hashCode(),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_C(M2)).hashCode()
+                ),
+                () -> assertNotEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_A(M)).hashCode(),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_B(M)).hashCode()
+                ),
+                () -> assertNotEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_A(M)).hashCode(),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_B(M)).hashCode()
+                ),
+                () -> assertNotEquals(
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_A(M)).hashCode(),
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_A(EU)).hashCode()
                 )
         );
     }
@@ -70,6 +142,10 @@ class IncrementalRankPriceTableJobTest {
                 () -> assertEquals(
                         "IncrementalRankPriceTableJob(super=PriceTableJob(super=VariablePriceJob(super=ContractedJob(super=Job(guild=PAINTWORK, name=plastic, description=Optional.empty), insurer=Insurer(name=INSURER_A, phones=[], fax=Optional.empty, email=Optional.empty)), quantity=Quantity(measure=3.0, unit=M)), have priceTable=true)",
                         GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(CASE_A(M)).toString()
+                ),
+                () -> assertEquals(
+                        "IncrementalRankPriceTableJob(super=PriceTableJob(super=VariablePriceJob(super=ContractedJob(super=Job(guild=BRICKWORK, name=plaster, description=Optional.empty), insurer=Insurer(name=INSURER_B, phones=[], fax=Optional.empty, email=Optional.empty)), quantity=Quantity(measure=12.0, unit=M2)), have priceTable=true)",
+                        GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(CASE_B(M2)).toString()
                 )
         );
     }
