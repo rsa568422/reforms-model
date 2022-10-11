@@ -13,7 +13,6 @@ import java.util.function.Function;
 
 import lombok.*;
 
-@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public abstract class PriceTableJob extends VariablePriceJob {
 
@@ -31,6 +30,11 @@ public abstract class PriceTableJob extends VariablePriceJob {
                          @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
         super(insurer, job, quantity);
         this.priceTable = priceTable;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("PriceTableJob(super=%s, have priceTable=%b", super.toString(), !this.priceTable.isEmpty());
     }
 
 }

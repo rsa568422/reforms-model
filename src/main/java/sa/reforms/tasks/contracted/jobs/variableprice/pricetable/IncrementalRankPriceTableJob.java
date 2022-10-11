@@ -17,11 +17,14 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 public class IncrementalRankPriceTableJob extends PriceTableJob {
 
-    public IncrementalRankPriceTableJob(@NonNull Insurer insurer, @NonNull Guild guild, @NonNull String name, @NonNull Quantity quantity, @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
+    public IncrementalRankPriceTableJob(@NonNull Insurer insurer, @NonNull Guild guild,
+                                        @NonNull String name, @NonNull Quantity quantity,
+                                        @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
         super(insurer, guild, name, quantity, priceTable);
     }
 
-    public IncrementalRankPriceTableJob(@NonNull Insurer insurer, @NonNull Job job, @NonNull Quantity quantity, @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
+    public IncrementalRankPriceTableJob(@NonNull Insurer insurer, @NonNull Job job, @NonNull Quantity quantity,
+                                        @NonNull Map<Range, Function<Double, BigDecimal>> priceTable) {
         super(insurer, job, quantity, priceTable);
     }
 
