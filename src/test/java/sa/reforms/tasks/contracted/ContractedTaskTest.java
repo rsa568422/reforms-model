@@ -41,22 +41,39 @@ class ContractedTaskTest {
 
     @Test
     void test_getJob() {
-
+        assertAll(
+                () -> {
+                    ContractedTask task = new ContractedTask(GET_DEFAULT_JOB_A());
+                    assertEquals(GET_DEFAULT_TASK_A().getJob(), task.getJob());
+                }
+        );
     }
 
     @Test
     void test_equals() {
-
+        assertAll(
+                () -> assertEquals(GET_DEFAULT_TASK_A(), GET_DEFAULT_TASK_A()),
+                () -> assertEquals(GET_DEFAULT_TASK_B(), GET_DEFAULT_TASK_B()),
+                () -> assertNotEquals(GET_DEFAULT_TASK_A(), GET_DEFAULT_TASK_B())
+        );
     }
 
     @Test
     void test_hashCode() {
-
+        assertAll(
+                () -> assertEquals(GET_DEFAULT_TASK_A().hashCode(), GET_DEFAULT_TASK_A().hashCode()),
+                () -> assertEquals(GET_DEFAULT_TASK_B().hashCode(), GET_DEFAULT_TASK_B().hashCode()),
+                () -> assertNotEquals(GET_DEFAULT_TASK_A().hashCode(), GET_DEFAULT_TASK_B().hashCode())
+        );
     }
 
     @Test
     void test_toString() {
-
+        when(this.contractedJob.toString()).thenReturn("[MOCK_CONTRACTED_JOB]");
+        assertEquals(
+                "ContractedTask(super=Task(status=PENDING), job=[MOCK_CONTRACTED_JOB])",
+                this.contractedTask.toString()
+        );
     }
 
 }
