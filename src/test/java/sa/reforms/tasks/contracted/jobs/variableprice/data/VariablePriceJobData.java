@@ -1,6 +1,7 @@
 package sa.reforms.tasks.contracted.jobs.variableprice.data;
 
 import sa.reforms.tasks.contracted.Quantity;
+
 import sa.reforms.tasks.contracted.data.ContractedJobData;
 import sa.reforms.tasks.contracted.data.QuantityData;
 

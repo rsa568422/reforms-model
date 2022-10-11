@@ -1,7 +1,8 @@
 package sa.reforms.tasks.contracted.jobs.constantprice.data;
 
-import sa.reforms.tasks.contracted.data.ContractedJobData;
 import sa.reforms.tasks.contracted.jobs.constantprice.ConstantPriceJob;
+
+import sa.reforms.tasks.contracted.data.ContractedJobData;
 
 public class ConstantPriceJobData extends ContractedJobData {
 

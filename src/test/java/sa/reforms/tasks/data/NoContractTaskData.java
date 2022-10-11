@@ -1,7 +1,8 @@
 package sa.reforms.tasks.data;
 
-import sa.reforms.entities.data.TaskData;
 import sa.reforms.tasks.NoContractTask;
+
+import sa.reforms.entities.data.TaskData;
 
 public class NoContractTaskData extends TaskData {
 

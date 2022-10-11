@@ -2,7 +2,6 @@ package sa.reforms.tasks.contracted.data;
 
 import sa.reforms.tasks.contracted.Quantity;
 
-
 public class QuantityData {
 
     public static Quantity CASE_A(Quantity.Unit unit) {
