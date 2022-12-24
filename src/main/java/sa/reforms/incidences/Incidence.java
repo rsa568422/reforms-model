@@ -1,5 +1,9 @@
-package sa.reforms.entities;
+package sa.reforms.incidences;
 
+import sa.reforms.insurers.Insurance;
+import sa.reforms.insurers.Person;
+import sa.reforms.insurers.Proficient;
+import sa.reforms.tasks.Task;
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;

@@ -1,6 +1,6 @@
 package sa.reforms.tasks.contracted;
 
-import sa.reforms.entities.Task;
+import sa.reforms.tasks.Task;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

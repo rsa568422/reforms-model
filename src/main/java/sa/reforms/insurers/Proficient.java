@@ -1,4 +1,4 @@
-package sa.reforms.entities;
+package sa.reforms.insurers;
 
 import java.util.Optional;
 

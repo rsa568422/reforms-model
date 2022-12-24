@@ -13,13 +13,13 @@ class ConstantPriceJobTest {
                 () -> {
                     ConstantPriceJob job1 = new ConstantPriceJob(
                             GET_DEFAULT_INSURER_A(),
-                            GET_DEFAULT_GUILD_A(),
-                            GET_DEFAULT_JOB_A().getName(),
+                            GET_GUILD_A(),
+                            GET_JOB_A().getName(),
                             GET_DEFAULT_PRICE_A()
                     );
                     ConstantPriceJob job2 = new ConstantPriceJob(
                             GET_DEFAULT_INSURER_A(),
-                            GET_DEFAULT_JOB_A(),
+                            GET_JOB_A(),
                             GET_DEFAULT_PRICE_A()
                     );
                     assertEquals(job1, job2);
@@ -49,12 +49,12 @@ class ConstantPriceJobTest {
                 () -> assertNotEquals(GET_DEFAULT_CONSTANT_PRICE_JOB_B(), GET_DEFAULT_CONSTANT_PRICE_JOB_A()),
                 () -> {
                     ConstantPriceJob job = GET_DEFAULT_CONSTANT_PRICE_JOB_A();
-                    job.setDescription(GET_DEFAULT_DESCRIPTION_B());
+                    job.setDescription(GET_DESCRIPTION_B());
                     assertNotEquals(GET_DEFAULT_CONSTANT_PRICE_JOB_A(), job);
                 },
                 () -> {
                     ConstantPriceJob job = GET_DEFAULT_CONSTANT_PRICE_JOB_B();
-                    job.setDescription(GET_DEFAULT_DESCRIPTION_A());
+                    job.setDescription(GET_DESCRIPTION_A());
                     assertNotEquals(GET_DEFAULT_CONSTANT_PRICE_JOB_B(), job);
                 }
         );
@@ -73,12 +73,12 @@ class ConstantPriceJobTest {
                         GET_DEFAULT_CONSTANT_PRICE_JOB_A().hashCode()),
                 () -> {
                     ConstantPriceJob job = GET_DEFAULT_CONSTANT_PRICE_JOB_A();
-                    job.setDescription(GET_DEFAULT_DESCRIPTION_B());
+                    job.setDescription(GET_DESCRIPTION_B());
                     assertNotEquals(GET_DEFAULT_CONSTANT_PRICE_JOB_A().hashCode(), job.hashCode());
                 },
                 () -> {
                     ConstantPriceJob job = GET_DEFAULT_CONSTANT_PRICE_JOB_B();
-                    job.setDescription(GET_DEFAULT_DESCRIPTION_A());
+                    job.setDescription(GET_DESCRIPTION_A());
                     assertNotEquals(GET_DEFAULT_CONSTANT_PRICE_JOB_B().hashCode(), job.hashCode());
                 }
         );

@@ -1,7 +1,5 @@
 package sa.reforms.tasks;
 
-import sa.reforms.entities.Task;
-
 import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;

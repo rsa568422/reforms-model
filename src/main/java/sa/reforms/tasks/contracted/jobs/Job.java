@@ -1,4 +1,4 @@
-package sa.reforms.entities;
+package sa.reforms.tasks.contracted.jobs;
 
 import java.util.Optional;
 

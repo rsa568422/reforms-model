@@ -13,8 +13,8 @@ class ProportionalPriceJobTest {
         ProportionalPriceJob job1 = GET_DEFAULT_PROPORTIONAL_PRICE_JOB_A();
         ProportionalPriceJob job2 = new ProportionalPriceJob(
                 GET_DEFAULT_INSURER_A(),
-                GET_DEFAULT_GUILD_A(),
-                GET_DEFAULT_JOB_A().getName(),
+                GET_GUILD_A(),
+                GET_JOB_A().getName(),
                 CASE_A(M),
                 GET_DEFAULT_UNIT_PRICE_A()
         );
@@ -45,12 +45,12 @@ class ProportionalPriceJobTest {
                 () -> assertNotEquals(GET_DEFAULT_PROPORTIONAL_PRICE_JOB_B(), GET_DEFAULT_PROPORTIONAL_PRICE_JOB_A()),
                 () -> {
                     ProportionalPriceJob job = GET_DEFAULT_PROPORTIONAL_PRICE_JOB_A();
-                    job.setDescription(GET_DEFAULT_DESCRIPTION_B());
+                    job.setDescription(GET_DESCRIPTION_B());
                     assertNotEquals(GET_DEFAULT_PROPORTIONAL_PRICE_JOB_A(), job);
                 },
                 () -> {
                     ProportionalPriceJob job = GET_DEFAULT_PROPORTIONAL_PRICE_JOB_B();
-                    job.setDescription(GET_DEFAULT_DESCRIPTION_A());
+                    job.setDescription(GET_DESCRIPTION_A());
                     assertNotEquals(GET_DEFAULT_PROPORTIONAL_PRICE_JOB_B(), job);
                 }
         );
@@ -69,12 +69,12 @@ class ProportionalPriceJobTest {
                         GET_DEFAULT_PROPORTIONAL_PRICE_JOB_A().hashCode()),
                 () -> {
                     ProportionalPriceJob job = GET_DEFAULT_PROPORTIONAL_PRICE_JOB_A();
-                    job.setDescription(GET_DEFAULT_DESCRIPTION_B());
+                    job.setDescription(GET_DESCRIPTION_B());
                     assertNotEquals(GET_DEFAULT_PROPORTIONAL_PRICE_JOB_A().hashCode(), job.hashCode());
                 },
                 () -> {
                     ProportionalPriceJob job = GET_DEFAULT_PROPORTIONAL_PRICE_JOB_B();
-                    job.setDescription(GET_DEFAULT_DESCRIPTION_A());
+                    job.setDescription(GET_DESCRIPTION_A());
                     assertNotEquals(GET_DEFAULT_PROPORTIONAL_PRICE_JOB_B().hashCode(), job.hashCode());
                 }
         );

@@ -15,7 +15,7 @@ public class IncrementalRankPriceTableJobData extends PriceTableJobData {
     public static IncrementalRankPriceTableJob GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_A(Quantity quantity) {
         return new IncrementalRankPriceTableJob(
                 GET_DEFAULT_INSURER_A(),
-                GET_DEFAULT_JOB_A(),
+                GET_JOB_A(),
                 quantity,
                 GET_DEFAULT_PRICE_TABLE()
         );
@@ -24,7 +24,7 @@ public class IncrementalRankPriceTableJobData extends PriceTableJobData {
     public static IncrementalRankPriceTableJob GET_DEFAULT_INCREMENTAL_RANK_PRICE_TABLE_JOB_B(Quantity quantity) {
         return new IncrementalRankPriceTableJob(
                 GET_DEFAULT_INSURER_B(),
-                GET_DEFAULT_JOB_B(),
+                GET_JOB_B(),
                 quantity,
                 GET_DEFAULT_PRICE_TABLE()
         );

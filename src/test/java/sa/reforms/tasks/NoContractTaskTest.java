@@ -25,23 +25,23 @@ class NoContractTaskTest {
                 },
                 () -> {
                     Exception exception = assertThrows(InvalidParamsException.class,
-                            () -> new NoContractTask(GET_DEFAULT_PRICE_B(), ""));
+                            () -> new NoContractTask(GET_PRICE_B(), ""));
                     assertEquals(InvalidParamsException.class, exception.getClass());
                 },
                 () -> {
                     Exception exception = assertThrows(InvalidParamsException.class,
-                            () -> new NoContractTask(GET_DEFAULT_PRICE_A(), "   "));
+                            () -> new NoContractTask(GET_PRICE_A(), "   "));
                     assertEquals(InvalidParamsException.class, exception.getClass());
                 },
-                () -> assertDoesNotThrow(() -> new NoContractTask(GET_DEFAULT_PRICE_B(), GET_DEFAULT_DESCRIPTION_B()))
+                () -> assertDoesNotThrow(() -> new NoContractTask(GET_PRICE_B(), GET_DEFAULT_DESCRIPTION_B()))
         );
     }
 
     @Test
     void test_getPrice() {
         assertAll(
-                () -> assertEquals(GET_DEFAULT_PRICE_A(), NO_CONTRACT_TASK_A().getPrice()),
-                () -> assertEquals(GET_DEFAULT_PRICE_B(), NO_CONTRACT_TASK_B().getPrice())
+                () -> assertEquals(GET_PRICE_A(), NO_CONTRACT_TASK_A().getPrice()),
+                () -> assertEquals(GET_PRICE_B(), NO_CONTRACT_TASK_B().getPrice())
         );
     }
 
@@ -50,13 +50,13 @@ class NoContractTaskTest {
         assertAll(
                 () -> {
                     NoContractTask task = NO_CONTRACT_TASK_A();
-                    task.setPrice(GET_DEFAULT_PRICE_B());
-                    assertEquals(GET_DEFAULT_PRICE_B(), task.getPrice());
+                    task.setPrice(GET_PRICE_B());
+                    assertEquals(GET_PRICE_B(), task.getPrice());
                 },
                 () -> {
                     NoContractTask task = NO_CONTRACT_TASK_B();
-                    task.setPrice(GET_DEFAULT_PRICE_A());
-                    assertEquals(GET_DEFAULT_PRICE_A(), task.getPrice());
+                    task.setPrice(GET_PRICE_A());
+                    assertEquals(GET_PRICE_A(), task.getPrice());
                 }
         );
     }
@@ -94,7 +94,7 @@ class NoContractTaskTest {
                 () -> assertNotEquals(NO_CONTRACT_TASK_B(), NO_CONTRACT_TASK_A()),
                 () -> {
                     NoContractTask task = NO_CONTRACT_TASK_A();
-                    task.setPrice(GET_DEFAULT_PRICE_B());
+                    task.setPrice(GET_PRICE_B());
                     assertNotEquals(NO_CONTRACT_TASK_A(), task);
                 },
                 () -> {
@@ -104,22 +104,22 @@ class NoContractTaskTest {
                 },
                 () -> {
                     NoContractTask task = NO_CONTRACT_TASK_A();
-                    task.setStatus(GET_DEFAULT_STATUS_B());
+                    task.setStatus(GET_STATUS_B());
                     assertNotEquals(NO_CONTRACT_TASK_A(), task);
                 },
                 () -> {
                     NoContractTask task = NO_CONTRACT_TASK_A();
-                    task.setPrice(GET_DEFAULT_PRICE_B());
+                    task.setPrice(GET_PRICE_B());
                     assertNotEquals(NO_CONTRACT_TASK_A(), task);
                 },
                 () -> {
                     NoContractTask task = NO_CONTRACT_TASK_B();
-                    task.setStatus(GET_DEFAULT_STATUS_A());
+                    task.setStatus(GET_STATUS_A());
                     assertNotEquals(NO_CONTRACT_TASK_B(), task);
                 },
                 () -> {
                     NoContractTask task = NO_CONTRACT_TASK_B();
-                    task.setPrice(GET_DEFAULT_PRICE_A());
+                    task.setPrice(GET_PRICE_A());
                     assertNotEquals(NO_CONTRACT_TASK_B(), task);
                 }
         );
@@ -134,7 +134,7 @@ class NoContractTaskTest {
                 () -> assertNotEquals(NO_CONTRACT_TASK_B().hashCode(), NO_CONTRACT_TASK_A().hashCode()),
                 () -> {
                     NoContractTask task = NO_CONTRACT_TASK_A();
-                    task.setPrice(GET_DEFAULT_PRICE_B());
+                    task.setPrice(GET_PRICE_B());
                     assertNotEquals(NO_CONTRACT_TASK_A().hashCode(), task.hashCode());
                 },
                 () -> {
@@ -144,12 +144,12 @@ class NoContractTaskTest {
                 },
                 () -> {
                     NoContractTask task = NO_CONTRACT_TASK_A();
-                    task.setStatus(GET_DEFAULT_STATUS_B());
+                    task.setStatus(GET_STATUS_B());
                     assertNotEquals(NO_CONTRACT_TASK_A().hashCode(), task.hashCode());
                 },
                 () -> {
                     NoContractTask task = NO_CONTRACT_TASK_B();
-                    task.setPrice(GET_DEFAULT_PRICE_A());
+                    task.setPrice(GET_PRICE_A());
                     assertNotEquals(NO_CONTRACT_TASK_B().hashCode(), task.hashCode());
                 },
                 () -> {
@@ -159,7 +159,7 @@ class NoContractTaskTest {
                 },
                 () -> {
                     NoContractTask task = NO_CONTRACT_TASK_B();
-                    task.setStatus(GET_DEFAULT_STATUS_A());
+                    task.setStatus(GET_STATUS_A());
                     assertNotEquals(NO_CONTRACT_TASK_B().hashCode(), task.hashCode());
                 }
         );
