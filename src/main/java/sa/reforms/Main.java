@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import sa.reforms.entities.*;
+import sa.reforms.incidences.Incidence;
+import sa.reforms.insurers.*;
+
 public class Main {
 
     public static void main(String... args) {

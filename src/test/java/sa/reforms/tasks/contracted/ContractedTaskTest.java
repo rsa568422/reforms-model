@@ -25,14 +25,14 @@ class ContractedTaskTest {
     void test_getPrice() {
         assertAll(
                 () -> {
-                    BigDecimal expected = GET_DEFAULT_PRICE_A();
-                    when(this.contractedJob.getPrice()).thenReturn(GET_DEFAULT_PRICE_A());
+                    BigDecimal expected = GET_PRICE_A();
+                    when(this.contractedJob.getPrice()).thenReturn(GET_PRICE_A());
                     BigDecimal actual = this.contractedTask.getPrice();
                     assertEquals(expected, actual);
                 },
                 () -> {
-                    BigDecimal expected = GET_DEFAULT_PRICE_B();
-                    when(this.contractedJob.getPrice()).thenReturn(GET_DEFAULT_PRICE_B());
+                    BigDecimal expected = GET_PRICE_B();
+                    when(this.contractedJob.getPrice()).thenReturn(GET_PRICE_B());
                     BigDecimal actual = this.contractedTask.getPrice();
                     assertEquals(expected, actual);
                 }

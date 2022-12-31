@@ -1,4 +1,4 @@
-package sa.reforms.entities;
+package sa.reforms.insurers;
 
 import java.util.Optional;
 
@@ -17,6 +17,10 @@ public class Proficient extends Person {
     public Proficient(@NonNull Long id, @NonNull String name, @NonNull Insurer insurer) {
         super(id, name);
         this.insurer = insurer;
+    }
+
+    public Proficient(@NonNull Person person, @NonNull Insurer insurer) {
+        this(person.getId(), person.getName(), insurer);
     }
 
     public void setEmail(String email) {

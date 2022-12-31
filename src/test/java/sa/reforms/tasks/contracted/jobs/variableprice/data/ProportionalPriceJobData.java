@@ -11,11 +11,11 @@ import static sa.reforms.tasks.contracted.Quantity.Unit.M2;
 public class ProportionalPriceJobData extends VariablePriceJobData {
 
     public static ProportionalPriceJob GET_DEFAULT_PROPORTIONAL_PRICE_JOB_A() {
-        return new ProportionalPriceJob(GET_DEFAULT_INSURER_A(), GET_DEFAULT_JOB_A(), CASE_A(M), GET_DEFAULT_UNIT_PRICE_A());
+        return new ProportionalPriceJob(GET_DEFAULT_INSURER_A(), GET_JOB_A(), CASE_A(M), GET_DEFAULT_UNIT_PRICE_A());
     }
 
     public static ProportionalPriceJob GET_DEFAULT_PROPORTIONAL_PRICE_JOB_B() {
-        return new ProportionalPriceJob(GET_DEFAULT_INSURER_B(), GET_DEFAULT_JOB_B(), CASE_B(M2), GET_DEFAULT_UNIT_PRICE_B());
+        return new ProportionalPriceJob(GET_DEFAULT_INSURER_B(), GET_JOB_B(), CASE_B(M2), GET_DEFAULT_UNIT_PRICE_B());
     }
 
     public static BigDecimal GET_DEFAULT_UNIT_PRICE_A() {

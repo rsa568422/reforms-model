@@ -15,22 +15,22 @@ class DirectPriceJobTest {
         assertAll(
                 () -> {
                     Exception exception = assertThrows(InvalidParamsException.class,
-                            () -> new DirectPriceJob(GET_DEFAULT_INSURER_A(), GET_DEFAULT_JOB_A(), CASE_A(M)));
+                            () -> new DirectPriceJob(GET_DEFAULT_INSURER_A(), GET_JOB_A(), CASE_A(M)));
                     assertEquals(InvalidParamsException.class, exception.getClass());
                 },
                 () -> {
                     Exception exception = assertThrows(InvalidParamsException.class,
-                            () -> new DirectPriceJob(GET_DEFAULT_INSURER_B(), GET_DEFAULT_JOB_B(), CASE_B(M2)));
+                            () -> new DirectPriceJob(GET_DEFAULT_INSURER_B(), GET_JOB_B(), CASE_B(M2)));
                     assertEquals(InvalidParamsException.class, exception.getClass());
                 },
                 () -> assertDoesNotThrow(() -> new DirectPriceJob(GET_DEFAULT_INSURER_A(),
-                        GET_DEFAULT_JOB_A(), CASE_A(EU))),
+                        GET_JOB_A(), CASE_A(EU))),
                 () -> {
                     DirectPriceJob job1 = GET_DEFAULT_DIRECT_PRICE_JOB_A();
                     DirectPriceJob job2 = new DirectPriceJob(
                             GET_DEFAULT_INSURER_A(),
-                            GET_DEFAULT_JOB_A().getGuild(),
-                            GET_DEFAULT_JOB_A().getName(),
+                            GET_JOB_A().getGuild(),
+                            GET_JOB_A().getName(),
                             CASE_EU_A()
                     );
                     assertEquals(job1, job2);
@@ -58,12 +58,12 @@ class DirectPriceJobTest {
                 () -> assertNotEquals(GET_DEFAULT_DIRECT_PRICE_JOB_B(), GET_DEFAULT_DIRECT_PRICE_JOB_A()),
                 () -> {
                     DirectPriceJob job = GET_DEFAULT_DIRECT_PRICE_JOB_A();
-                    job.setDescription(GET_DEFAULT_DESCRIPTION_B());
+                    job.setDescription(GET_DESCRIPTION_B());
                     assertNotEquals(GET_DEFAULT_DIRECT_PRICE_JOB_A(), job);
                 },
                 () -> {
                     DirectPriceJob job = GET_DEFAULT_DIRECT_PRICE_JOB_B();
-                    job.setDescription(GET_DEFAULT_DESCRIPTION_A());
+                    job.setDescription(GET_DESCRIPTION_A());
                     assertNotEquals(GET_DEFAULT_DIRECT_PRICE_JOB_B(), job);
                 }
         );
@@ -82,12 +82,12 @@ class DirectPriceJobTest {
                         GET_DEFAULT_DIRECT_PRICE_JOB_A().hashCode()),
                 () -> {
                     DirectPriceJob job = GET_DEFAULT_DIRECT_PRICE_JOB_A();
-                    job.setDescription(GET_DEFAULT_DESCRIPTION_B());
+                    job.setDescription(GET_DESCRIPTION_B());
                     assertNotEquals(GET_DEFAULT_DIRECT_PRICE_JOB_A().hashCode(), job.hashCode());
                 },
                 () -> {
                     DirectPriceJob job = GET_DEFAULT_DIRECT_PRICE_JOB_B();
-                    job.setDescription(GET_DEFAULT_DESCRIPTION_A());
+                    job.setDescription(GET_DESCRIPTION_A());
                     assertNotEquals(GET_DEFAULT_DIRECT_PRICE_JOB_B().hashCode(), job.hashCode());
                 }
         );

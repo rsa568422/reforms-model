@@ -1,4 +1,4 @@
-package sa.reforms.entities;
+package sa.reforms.tasks;
 
 import java.math.BigDecimal;
 

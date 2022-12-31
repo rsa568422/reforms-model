@@ -10,14 +10,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import static sa.reforms.tasks.contracted.Quantity.Unit.*;
-
 public class UniqueRankPriceJobData extends PriceTableJobData {
 
     public static UniqueRankPriceJob GET_DEFAULT_UNIQUE_RANK_PRICE_TABLE_JOB_A(Quantity quantity) {
         return new UniqueRankPriceJob(
                 GET_DEFAULT_INSURER_A(),
-                GET_DEFAULT_JOB_A(),
+                GET_JOB_A(),
                 quantity,
                 GET_DEFAULT_PRICE_TABLE()
         );
@@ -26,7 +24,7 @@ public class UniqueRankPriceJobData extends PriceTableJobData {
     public static UniqueRankPriceJob GET_DEFAULT_UNIQUE_RANK_PRICE_TABLE_JOB_B(Quantity quantity) {
         return new UniqueRankPriceJob(
                 GET_DEFAULT_INSURER_B(),
-                GET_DEFAULT_JOB_B(),
+                GET_JOB_B(),
                 quantity,
                 GET_DEFAULT_PRICE_TABLE()
         );

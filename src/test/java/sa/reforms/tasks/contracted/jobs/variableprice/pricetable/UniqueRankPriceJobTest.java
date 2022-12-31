@@ -14,8 +14,8 @@ class UniqueRankPriceJobTest {
         UniqueRankPriceJob job1 = GET_DEFAULT_UNIQUE_RANK_PRICE_TABLE_JOB_A(CASE_A(M));
         UniqueRankPriceJob job2 = new UniqueRankPriceJob(
                 GET_DEFAULT_INSURER_A(),
-                GET_DEFAULT_GUILD_A(),
-                GET_DEFAULT_JOB_A().getName(),
+                GET_GUILD_A(),
+                GET_JOB_A().getName(),
                 CASE_A(M),
                 GET_DEFAULT_PRICE_TABLE()
         );
