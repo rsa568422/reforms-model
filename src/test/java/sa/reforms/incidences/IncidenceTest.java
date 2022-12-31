@@ -19,10 +19,9 @@ import java.util.*;
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
-import static sa.reforms.incidences.data.IncidenceData.GET_INCIDENCE_A;
-import static sa.reforms.incidences.data.IncidenceData.GET_INCIDENCE_B;
-import static sa.reforms.insurers.data.ClientData.GET_CLIENT_A;
-import static sa.reforms.insurers.data.InsuranceData.GET_INSURANCE_A;
+import static sa.reforms.incidences.data.IncidenceData.*;
+import static sa.reforms.insurers.data.ClientData.*;
+import static sa.reforms.insurers.data.InsuranceData.*;
 import static sa.reforms.insurers.data.ProficientData.*;
 
 @ExtendWith(MockitoExtension.class)
