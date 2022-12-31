@@ -18,7 +18,6 @@ import java.time.Instant;
 import java.util.*;
 
 @ToString
-@EqualsAndHashCode
 public class Incidence {
 
     @Getter
@@ -62,7 +61,27 @@ public class Incidence {
     }
 
     public void setProficient(Proficient proficient) {
+        if (!insurance.getInsurer().equals(proficient.getInsurer()))
+            throw new InvalidParamsException("Different insurer for insurance and proficient");
         this.proficients.add(0, new ImmutablePair<>(Date.from(Instant.now()), proficient));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Incidence)) return false;
+
+        Incidence incidence = (Incidence) o;
+
+        if (!getCode().equals(incidence.getCode())) return false;
+        return getInsurance().equals(incidence.getInsurance());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getCode().hashCode();
+        result = 31 * result + getInsurance().hashCode();
+        return result;
     }
 
 }

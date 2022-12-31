@@ -10,4 +10,8 @@ public class Client extends Person {
         super(id, name);
     }
 
+    public Client(@NonNull Person person) {
+        this(person.getId(), person.getName());
+    }
+
 }

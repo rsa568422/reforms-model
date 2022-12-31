@@ -19,6 +19,10 @@ public class Proficient extends Person {
         this.insurer = insurer;
     }
 
+    public Proficient(@NonNull Person person, @NonNull Insurer insurer) {
+        this(person.getId(), person.getName(), insurer);
+    }
+
     public void setEmail(String email) {
         this.email = Optional.ofNullable(email);
     }
