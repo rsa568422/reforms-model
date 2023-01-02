@@ -174,6 +174,10 @@ class IncidenceTest {
         expected.getTasks().add(this.taskA);
         expected.getTasks().add(this.taskB);
         assertAll(
+                () -> assertTrue(this.incidence.toString().startsWith("Incidence(code=CODE_A, ")),
+                () -> assertTrue(this.incidence.toString().contains("phones=[], ")),
+                () -> assertTrue(this.incidence.toString().contains("fax=Optional.empty, ")),
+                () -> assertTrue(this.incidence.toString().contains("Person(id=1, ")),
                 () -> assertEquals(expected.toString(), this.incidence.toString()),
                 () -> assertNotEquals(GET_INCIDENCE_A().toString(), this.incidence.toString()),
                 () -> assertNotEquals(GET_INCIDENCE_B().toString(), this.incidence.toString())
