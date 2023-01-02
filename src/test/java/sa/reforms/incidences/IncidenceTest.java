@@ -1,11 +1,15 @@
 package sa.reforms.incidences;
 
+import lombok.NonNull;
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import sa.reforms.events.Appointment;
+import sa.reforms.events.Call;
+import sa.reforms.events.Event;
 import sa.reforms.exceptions.InvalidParamsException;
 import sa.reforms.exceptions.ReformsException;
 import sa.reforms.insurers.Person;
@@ -18,6 +22,7 @@ import java.util.*;
 
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static sa.reforms.incidences.data.IncidenceData.*;
 import static sa.reforms.insurers.data.ClientData.*;
@@ -149,6 +154,10 @@ class IncidenceTest {
         Incidence expected = GET_INCIDENCE_A();
         expected.getTasks().add(this.taskA);
         expected.getTasks().add(this.taskB);
+        Call call = mock(Call.class);
+        Appointment appointment = mock(Appointment.class);
+        expected.addEvent(call);
+        expected.addEvent(appointment);
         assertAll(
                 () -> assertEquals(expected, this.incidence),
                 () -> assertEquals(GET_INCIDENCE_A(), this.incidence),
@@ -171,8 +180,18 @@ class IncidenceTest {
     @Test
     void test_toString() {
         Incidence expected = GET_INCIDENCE_A();
+        Call call = mock(Call.class);
+        Appointment appointment = mock(Appointment.class);
+        this.incidence.addEvent(call);
+        this.incidence.addEvent(appointment);
+        expected.addEvent(call);
+        expected.addEvent(appointment);
         expected.getTasks().add(this.taskA);
         expected.getTasks().add(this.taskB);
+
+        when(call.toString()).thenReturn("call");
+        when(appointment.toString()).thenReturn("appointment");
+
         assertAll(
                 () -> assertTrue(this.incidence.toString().startsWith("Incidence(code=CODE_A, ")),
                 () -> assertTrue(this.incidence.toString().contains("phones=[], ")),
@@ -230,6 +249,38 @@ class IncidenceTest {
                 () -> assertTrue(contacts.containsAll(expected)),
                 () -> assertTrue(expected.containsAll(contacts))
         );
+    }
+
+    @Test
+    void test_getCalls() {
+        class NewEvent extends Event {
+            public NewEvent(@NonNull Date date) {
+                super(date);
+            }
+        }
+
+        Call call = mock(Call.class);
+        Appointment appointment = mock(Appointment.class);
+        NewEvent event = mock(NewEvent.class);
+        this.incidence.addEvent(call);
+        this.incidence.addEvent(appointment);
+        this.incidence.addEvent(event);
+
+        List<Call> calls = this.incidence.getCalls();
+
+        assertEquals(1, calls.size());
+    }
+
+    @Test
+    void test_getAppointments() {
+        Call call = mock(Call.class);
+        Appointment appointment = mock(Appointment.class);
+        this.incidence.addEvent(call);
+        this.incidence.addEvent(appointment);
+
+        List<Appointment> appointments = this.incidence.getAppointments();
+
+        assertEquals(1, appointments.size());
     }
 
 }
