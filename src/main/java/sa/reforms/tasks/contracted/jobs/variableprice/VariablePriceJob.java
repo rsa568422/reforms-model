@@ -1,9 +1,10 @@
 package sa.reforms.tasks.contracted.jobs.variableprice;
 
-import sa.reforms.insurers.Insurer;
 import sa.reforms.tasks.contracted.jobs.Job;
 import sa.reforms.tasks.contracted.ContractedJob;
 import sa.reforms.tasks.contracted.Quantity;
+
+import sa.reforms.insurers.Insurer;
 
 import java.math.BigDecimal;
 

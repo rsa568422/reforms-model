@@ -1,8 +1,9 @@
 package sa.reforms.tasks.contracted.jobs.constantprice;
 
-import sa.reforms.insurers.Insurer;
 import sa.reforms.tasks.contracted.jobs.Job;
 import sa.reforms.tasks.contracted.ContractedJob;
+
+import sa.reforms.insurers.Insurer;
 
 import java.math.BigDecimal;
 
