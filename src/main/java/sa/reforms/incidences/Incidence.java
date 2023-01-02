@@ -1,21 +1,25 @@
 package sa.reforms.incidences;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.ToString;
-import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.commons.lang3.tuple.Pair;
-import sa.reforms.exceptions.InvalidParamsException;
+import sa.reforms.events.Appointment;
+import sa.reforms.events.Call;
+import sa.reforms.events.Event;
 import sa.reforms.insurers.Insurance;
 import sa.reforms.insurers.Person;
 import sa.reforms.insurers.Proficient;
 import sa.reforms.tasks.Task;
+import sa.reforms.exceptions.InvalidParamsException;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Instant;
 import java.util.*;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
+
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.ToString;
 
 @ToString
 public class Incidence {
@@ -29,6 +33,8 @@ public class Incidence {
     private final Insurance insurance;
 
     private final List<Pair<Date, Proficient>> proficients = new LinkedList<>();
+
+    private final List<Event> events = new LinkedList<>();
 
     @Getter
     private final Set<Task> tasks = new LinkedHashSet<>();
@@ -60,10 +66,41 @@ public class Incidence {
         return this.proficients;
     }
 
-    public void setProficient(Proficient proficient) {
+    public void setProficient(@NonNull Proficient proficient) {
         if (!insurance.getInsurer().equals(proficient.getInsurer()))
             throw new InvalidParamsException("Different insurer for insurance and proficient");
         this.proficients.add(0, new ImmutablePair<>(Date.from(Instant.now()), proficient));
+    }
+
+    public List<Event> getEvents() {
+        return this.events
+                .stream()
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+    }
+
+    public List<Call> getCalls() {
+        return this.events
+                .stream()
+                .map(Incidence::getCall)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+    }
+
+    public List<Appointment> getAppointments() {
+        return this.events
+                .stream()
+                .map(Incidence::getAppointment)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+    }
+
+    public void addEvent(@NonNull Event event) {
+        this.events.add(0, event);
     }
 
     @Override
@@ -82,6 +119,29 @@ public class Incidence {
         int result = getCode().hashCode();
         result = 31 * result + getInsurance().hashCode();
         return result;
+    }
+
+    private static Optional<Call> getCall(Event event) {
+        Optional<Call> call;
+        if (event instanceof Call) {
+            call = Optional.of((Call) event);
+        } else if (event instanceof Appointment) {
+            Appointment appointment = (Appointment) event;
+            call = appointment.getCall();
+        } else {
+            call = Optional.empty();
+        }
+        return call;
+    }
+
+    private static Optional<Appointment> getAppointment(Event event) {
+        Optional<Appointment> appointment;
+        if (event instanceof Appointment) {
+            appointment = Optional.of((Appointment) event);
+        } else {
+            appointment = Optional.empty();
+        }
+        return appointment;
     }
 
 }
