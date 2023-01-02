@@ -4,7 +4,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class InsuranceTest {
+class PersonTest {
+
+    @Test
+    void test_setSurname1() {
+    }
+
+    @Test
+    void test_setSurname2() {
+    }
 
     @Test
     void test_equals() {
@@ -15,19 +23,23 @@ class InsuranceTest {
     }
 
     @Test
-    void test_getCode() {
+    void test_getId() {
     }
 
     @Test
-    void test_getInsurer() {
+    void test_getName() {
     }
 
     @Test
-    void test_getClient() {
+    void test_getSurname1() {
     }
 
     @Test
-    void test_getProperty() {
+    void test_getSurname2() {
+    }
+
+    @Test
+    void test_getPhones() {
     }
 
     @Test
